@@ -1,13 +1,13 @@
 class ItemsSerializer < ActiveModel::Serializer
-  attributes :id, :name, :description , :category_name, :owner, :type, :image, :location
+  attributes :id, :item_name, :description , :category_name, :owner, :type, :image, :location
 
 
 
   def category_name
-    object.category.name
+    object.category.category_name
   end
   def owner
-    object.user.name
+    object.user.user_name
   end
   def type
     object.item_type.name
@@ -16,6 +16,6 @@ class ItemsSerializer < ActiveModel::Serializer
     object.image
   end
   def location
-    object.city.name
+    object.city.city_name
   end
 end

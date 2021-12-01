@@ -8,13 +8,13 @@ ItemType.destroy_all
 Item.destroy_all
 User.destroy_all
 
-puts 'Seeding cities '
+puts '🏙️ 🌆 Seeding cities 🏙️ 🌆 '
 
 10.times {City.create(
-    name: Faker::Address.unique.state
+    city_name: Faker::Address.unique.state
 )}
 
-puts 'Seeding item types'
+puts '🏀 🥎 🏈 🖌️  🖥️ Seeding item types 🏀 🥎 🏈 🖌️  🖥️ '
 ItemType.create(
     name:"Sell"
 )
@@ -31,13 +31,15 @@ ItemType.create(
 )
 
 
-puts 'Seeding users'
+
+puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑‍🦰 '
 
 5.times {User.create(
-    name: Faker::Name.unique.name ,
+    user_name: Faker::Name.unique.name ,
     email: Faker::Internet.unique.email,
     phone: Faker::PhoneNumber.unique.cell_phone,
-    city_id: rand(1..10)
+    city_id: rand(1..10),
+    password: "password"
     )}
 
  
@@ -45,10 +47,10 @@ puts 'Seeding users'
      
     # Vehicles
      Category.create(
-     name:"Vehicles"
+     category_name:"Vehicles"
      )
     15.times {Item.create(
-     name: Faker::Vehicle.unique.make_and_model,
+     item_name: Faker::Vehicle.unique.make_and_model,
      description: Faker::Lorem.sentence,
      image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['vehicles', 'exterior']),
      user_id: rand(1..5),
@@ -59,10 +61,10 @@ puts 'Seeding users'
      
     #  Art
      Category.create(
-         name:"Art"
+         category_name:"Art"
          )
     15.times {Item.create(
-        name: Faker::Artist.unique.name ,
+        item_name: Faker::Artist.unique.name ,
         description: Faker::Lorem.sentence,
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['art', 'piece']),
         user_id: rand(1..5),
@@ -73,10 +75,10 @@ puts 'Seeding users'
 
     # Games
     Category.create(
-        name:"Games"
+        category_name:"Games"
         )
 15.times {Item.create(
-        name: Faker::Game.unique.title ,
+        item_name: Faker::Game.unique.title ,
         description: Faker::Lorem.sentence,
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['videogame', 'game']),
         user_id: rand(1..5),
@@ -87,11 +89,11 @@ puts 'Seeding users'
 
     # Books
     Category.create(
-        name:"Books "
+        category_name:"Books "
         )
 
 15.times {Item.create(
-        name: Faker::Book.unique.title,
+        item_name: Faker::Book.unique.title,
         description: Faker::Lorem.sentence,
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['book', 'cover']),
         user_id: rand(1..5),
@@ -102,11 +104,11 @@ puts 'Seeding users'
 
 # Electronics
     Category.create(
-        name:"Electronics"
+        category_name:"Electronics"
         )
 
 15.times {Item.create(
-        name: Faker::Appliance.unique.equipment,
+        item_name: Faker::Appliance.unique.equipment,
         description: Faker::Lorem.sentence,
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['electronic', 'appliance']),
         user_id: rand(1..5),
@@ -118,11 +120,11 @@ puts 'Seeding users'
 
     # Furniture
     Category.create(
-        name:"Furniture"
+        category_name:"Furniture"
         )
 
 15.times {Item.create(
-        name: Faker::House.unique.furniture,
+        item_name: Faker::House.unique.furniture,
         description: Faker::Lorem.sentence,
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['furniture', 'sale']),
         user_id: rand(1..5),

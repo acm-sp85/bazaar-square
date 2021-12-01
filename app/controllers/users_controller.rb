@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+   before_action :check_authorization, except: [:create]
      before_action :set_user, only: [:show]
     def index
 
@@ -26,9 +27,12 @@ class UsersController < ApplicationController
 
 
   private
+  def check_authorization
+     return render json: { error: "must be logged in!"} , status: :unauthorized unless session.include? :user_id
+  end
 
   def user_params
-        params.permit(:id, :name, :email, :phone, :city_id)
+        params.permit(:id, :user_name, :email, :phone, :city_id)
   end
 
   def set_user

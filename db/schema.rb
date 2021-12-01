@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_23_124507) do
+ActiveRecord::Schema.define(version: 2021_12_01_143017) do
 
   create_table "categories", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "category_name"
   end
 
   create_table "cities", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "city_name"
   end
 
   create_table "item_types", force: :cascade do |t|
@@ -31,7 +31,6 @@ ActiveRecord::Schema.define(version: 2021_11_23_124507) do
   end
 
   create_table "items", force: :cascade do |t|
-    t.string "name"
     t.string "description"
     t.integer "category_id"
     t.integer "user_id"
@@ -40,15 +39,17 @@ ActiveRecord::Schema.define(version: 2021_11_23_124507) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image"
+    t.string "item_name"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
     t.string "email"
     t.integer "phone"
     t.integer "city_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.string "user_name"
   end
 
 end

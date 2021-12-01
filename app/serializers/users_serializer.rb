@@ -1,7 +1,7 @@
 class UsersSerializer < ActiveModel::Serializer
-  attributes :id , :name, :email, :phone, :location
+  attributes :id , :user_name, :email, :phone, :location
 
   def location
-    object.city.name
+    object.city.city_name
   end
 end

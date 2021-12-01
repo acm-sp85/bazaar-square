@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
 
 # FORCING MY USER TO BE LAST FOR NOW
     def create
-      user = User.last
+      user = User..find_by(user_name: params[:user_name])
        session[:user_id] = user.id
           render json: user, status: :ok
     end
