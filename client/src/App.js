@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [currentUser, setCurrentUser] = useState(null);
+  const [error, setError] = useState("");
   useEffect(() => {
     fetch("/items", {
       credentials: "include",
@@ -19,39 +21,38 @@ function App() {
   }, []);
 
   // TEMPORARY FAKE-LOGING
-  // const login = (e) => {
-  //   e.preventDefault();
 
-  //   const requestOptions = {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       // user_name: email,
-  //       // password: password,
-  //     }),
-  //   };
-
-  //   fetch("/login", requestOptions).then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((user) => {
-  //         console.log(user);
-  //       });
-  //     } else {
-  //       response.json().then((error) => {
-  //         console.log(error);
-  //       });
-  //     }
-  //   });
-
-  //   fetch("/me").then((response) => {
-  //     response.json().then((x) => {
-  //       console.log(x);
-  //     });
-  //   });
-  // };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+    console.log(userName);
+    console.log(password);
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_name: userName,
+        password: password,
+      }),
+    };
+    fetch("/login", requestOptions).then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          setCurrentUser(user);
+          // history.push("/customers");
+        });
+      } else {
+        response.json().then((error) => {
+          setError(error.error);
+          console.log(error);
+        });
+      }
+    });
+  };
+
+  const logOut = () => {
+    fetch("/logout", { method: "DELETE" }).then(() => {
+      console.log("logged out");
+    });
   };
 
   return (
@@ -61,10 +62,10 @@ function App() {
       <form onSubmit={handleSubmit}>
         <input
           className="custom-imputs"
-          type="email"
-          placeholder="Email..."
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          type="text"
+          placeholder="Username..."
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
         />
         <input
           className="custom-imputs"
@@ -75,7 +76,7 @@ function App() {
         />
         <button>LOGIN</button>
       </form>
-      {/* <button onClick={login}>LogIn</button> */}
+      <button onClick={logOut}>LogOut</button>
     </div>
   );
 }

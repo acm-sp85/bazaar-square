@@ -1,10 +1,19 @@
 class SessionsController < ApplicationController
-#   skip_before_action :check_authorization, only: :create
+  skip_before_action :check_authorization, only: :create
 
-# FORCING MY USER TO BE LAST FOR NOW
-    def create
-      user = User..find_by(user_name: params[:user_name])
+
+  def create
+      # byebug
+    user = User.find_by(user_name: params[:user_name])
+    if user&.authenticate(params[:password])
        session[:user_id] = user.id
           render json: user, status: :ok
+    else
+        render json: { error: "Invalid username or password"} , status: :unauthorized
     end
   end
+  def logout
+        session[:user_id] = nil
+        render json: { status: 200, logged_out: true}
+  end
+end

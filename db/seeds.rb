@@ -34,7 +34,14 @@ ItemType.create(
 
 puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑‍🦰 '
 
-5.times {User.create(
+    User.create(
+        user_name: "admin",
+    email: "admin@gmail.com",
+    phone: 123,
+    city_id: 1,
+    password: "password")
+
+6.times {User.create(
     user_name: Faker::Name.unique.name ,
     email: Faker::Internet.unique.email,
     phone: Faker::PhoneNumber.unique.cell_phone,
