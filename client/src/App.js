@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 
 function App() {
-  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
   const [error, setError] = useState("");
   useEffect(() => {
-    fetch("/items", {
+    fetch("/me", {
       credentials: "include",
     }).then((res) => {
       if (res.ok) {
@@ -15,7 +15,7 @@ function App() {
           console.log(user);
         });
       } else {
-        console.log("error");
+        console.log("User is not logged in");
       }
     });
   }, []);
@@ -24,13 +24,12 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(userName);
-    console.log(password);
+
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_name: userName,
+        email: email,
         password: password,
       }),
     };
@@ -63,9 +62,9 @@ function App() {
         <input
           className="custom-imputs"
           type="text"
-          placeholder="Username..."
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
+          placeholder="Email..."
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           className="custom-imputs"

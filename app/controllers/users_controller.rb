@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
    before_action :check_authorization, except: [:create]
-     before_action :set_user, only: [:show,:password, :password_confirmation]
+     before_action :set_user, only: [:show,:password, :password_confirmation, :logged_id]
+
     def index
 
         users = User.all
@@ -16,10 +17,8 @@ class UsersController < ApplicationController
   end
 
   def logged_id
-    # byebug
-            if session[:user_id] 
-            render json: @user
-            
+    if session[:user_id] 
+            render json: @user            
         else
             render json: {error: "User not logged in"}, status: :unauthorized
         end
@@ -38,7 +37,8 @@ class UsersController < ApplicationController
   end
 
   def set_user
-        @user = User.find_by(id: params[:id])
+
+        @user = User.find_by(id: session[:user_id])
 
   end
  
