@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -54,6 +55,8 @@ function App() {
     });
   };
 
+  const signUp = () => {};
+
   return (
     // BEM convention
     <div className="app">
@@ -75,6 +78,7 @@ function App() {
         />
         <button>LOGIN</button>
       </form>
+      <Link to="/signup">Sign Up</Link>
       <button onClick={logOut}>LogOut</button>
     </div>
   );

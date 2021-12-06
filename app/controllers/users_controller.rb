@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-   before_action :check_authorization, except: [:create]
+  # remove index before deplying
+   before_action :check_authorization, except: [:create, :index]
      before_action :set_user, only: [:show,:password, :password_confirmation, :logged_id]
 
     def index
@@ -13,6 +14,16 @@ class UsersController < ApplicationController
       render json:  @user, serializer: UsersSerializer, status: :ok
     else
       render json: {error: "User not found"} , status: :not_found
+    end
+  end
+
+  def create
+    user = User.create(user_params)
+    if user.valid?
+      session[:user_id] = user.id
+      render json: user, status: :created
+    else
+      render json: {errors: user.errors.full_messages}, status: :unprocessable_entity 
     end
   end
 

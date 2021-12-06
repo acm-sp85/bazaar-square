@@ -10,9 +10,15 @@ User.destroy_all
 
 puts '🏙️ 🌆 Seeding cities 🏙️ 🌆 '
 
-10.times {City.create(
-    city_name: Faker::Address.unique.state
-)}
+# 10.times {City.create(
+#     city_name: Faker::Address.unique.state
+# )}
+
+City.create(city_name: "Manhattan")
+City.create(city_name: "Brooklyn")
+City.create(city_name: "Queens")
+City.create(city_name: "Bronx")
+City.create(city_name: "Staten Island")
 
 puts '🏀 🥎 🏈 🖌️  🖥️ Seeding item types 🏀 🥎 🏈 🖌️  🖥️ '
 ItemType.create(
@@ -45,7 +51,7 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
     user_name: Faker::Name.unique.name ,
     email: Faker::Internet.unique.email,
     phone: Faker::PhoneNumber.unique.cell_phone,
-    city_id: rand(1..10),
+    city_id: rand(1..5),
     password: "password"
     )}
 
@@ -62,7 +68,7 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
      image: Faker::LoremFlickr.image(size: "300x300", search_terms: ['vehicles', 'exterior']),
      user_id: rand(1..5),
      category_id:1,
-     city_id:rand(1..10),
+     city_id:rand(1..5),
      item_type_id:rand(1..4)
      )}
      
@@ -76,7 +82,7 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['art', 'piece']),
         user_id: rand(1..5),
         category_id:2,
-        city_id:rand(1..10),
+        city_id:rand(1..5),
         item_type_id:rand(1..4)
     )}
 
@@ -90,7 +96,7 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['videogame', 'game']),
         user_id: rand(1..5),
         category_id:3,
-        city_id:rand(1..10),
+        city_id:rand(1..5),
         item_type_id:rand(1..4)
     )}
 
@@ -105,7 +111,7 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['book', 'cover']),
         user_id: rand(1..5),
         category_id:4,
-        city_id:rand(1..10),
+        city_id:rand(1..5),
         item_type_id:rand(1..4)
     )}
 
@@ -120,7 +126,7 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['electronic', 'appliance']),
         user_id: rand(1..5),
         category_id:5,
-        city_id:rand(1..10),
+        city_id:rand(1..5),
         item_type_id:rand(1..4)
     )}
 
@@ -136,6 +142,6 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
         image:  Faker::LoremFlickr.image(size: "300x300", search_terms: ['furniture', 'sale']),
         user_id: rand(1..5),
         category_id:6,
-        city_id:rand(1..10),
+        city_id:rand(1..5),
         item_type_id:rand(1..4)
     )}

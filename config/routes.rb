@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/me", to: "users#logged_id"
 
   post "/login", to: "sessions#create"
+  post "/signup", to: "users#create"
 
     delete "/logout", to: "sessions#logout"
 end
