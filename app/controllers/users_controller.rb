@@ -29,7 +29,7 @@ class UsersController < ApplicationController
 
   def logged_id
     if session[:user_id] 
-            render json: @user            
+            render json: @user , serializer: UsersSerializer          
         else
             render json: {error: "User not logged in"}, status: :unauthorized
         end

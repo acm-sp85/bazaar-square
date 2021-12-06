@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show]
+   before_action :check_authorization, except: [:create, :index, :destroy, :update]
+  before_action :set_item, only: [:show, :destroy, :update]
     def index
 
         items = Item.all
@@ -13,10 +14,42 @@ class ItemsController < ApplicationController
     end
   end
 
+  def create
+    item = Item.create(items_params)
+    if item.valid?
+      
+      render json: item, status: :created
+    else
+      render json: {errors: item.errors.full_messages}, status: :unprocessable_entity 
+    end
+  end
+
+  def update
+      updated_item = @item.update(items_params)
+      if updated_item
+        render json: @item, status: :accepted
+      else
+        render json: {error: "Impossible to update item"}, status: :unprocessable_entity 
+      end
+      
+  end  
+
+
+  def destroy
+      
+    if @item.destroy
+
+      head :no_content, status: :ok
+
+    else
+      ender json: {error: "Impossible to delete item"}, status: :unprocessable_entity 
+    end
+  end
+
   private
 
   def items_params
-        params.permit(:id, :name, :city_id, :description, :item_type_id, :category_id)
+        params.permit(:id, :user_id, :city_id, :description, :item_type_id, :category_id, :item_name)
   end
 
   def set_item

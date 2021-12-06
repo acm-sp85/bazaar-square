@@ -25,7 +25,6 @@ function Signup({ setCurrentUser }) {
         password_confirmation: passwordConfirmation,
         email,
         phone,
-        // HARDCODING THE CITY UNTIL WE ADD DROPDOWN
         city_id: city,
       }),
     };
