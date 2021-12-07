@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AuthenticatedApp from "./AuthenticatedApp";
+import Header from "./components/Header";
+import Home from "./components/Home";
 import UnauthenticatedApp from "./UnauthenticatedApp";
 
 function App() {
@@ -30,18 +32,19 @@ function App() {
 
   return (
     <BrowserRouter>
-      {/* home */}
-      {/* header */}
+      <Header />
+      <Home />
+
       {/* map */}
       {/* categories carousel */}
-      {currentUser ? (
+      {/* {currentUser ? (
         <AuthenticatedApp
           setCurrentUser={setCurrentUser}
           currentUser={currentUser}
         />
       ) : (
         <UnauthenticatedApp setCurrentUser={setCurrentUser} />
-      )}
+      )} */}
 
       {/* search page */}
 
