@@ -30,6 +30,10 @@ function App() {
 
   return (
     <BrowserRouter>
+      {/* home */}
+      {/* header */}
+      {/* map */}
+      {/* categories carousel */}
       {currentUser ? (
         <AuthenticatedApp
           setCurrentUser={setCurrentUser}
@@ -38,6 +42,10 @@ function App() {
       ) : (
         <UnauthenticatedApp setCurrentUser={setCurrentUser} />
       )}
+
+      {/* search page */}
+
+      {/* footer */}
     </BrowserRouter>
   );
 }
