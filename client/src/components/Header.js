@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "../styles/Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import DropDown from "./DropDown";
 
-function Header() {
+function Header({ currentUser }) {
   const [dropDownOn, setDropDownOn] = useState(false);
 
   const exandUserButton = () => {
@@ -20,16 +21,16 @@ function Header() {
         alt=""
       />
       <div className="header__center">
-        <input type="text"></input>
+        <input type="text" placeholder="Search Item"></input>
         <SearchIcon />
       </div>
       <div className="header__right" onClick={exandUserButton}>
         <PersonOutlineIcon />
-        <ExpandMoreIcon />
+        {dropDownOn ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </div>
       {dropDownOn ? (
         <div className="dropdown">
-          <DropDown />
+          <DropDown currentUser={currentUser} />
         </div>
       ) : (
         <></>

@@ -9,20 +9,26 @@
 }
 
 .left__component {
-  background-color: cadetblue;
-  text-align: center;
-  width: 20vw;
   height: 300px;
+  /* height: fit-content(20em); */
+  padding: 15px;
+  width: 20vw;
+  text-align: center;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
 }
 .map {
-    background-color: blueviolet;
-    height: 300px;
-    width: 60vw;
-    text-align: center;
+  /* background-color: rgb(226, 43, 52); */
+  height: 500px;
+  width: 60vw;
+  text-align: center;
 }
 .right__component {
-    height: 300px;
-  background-color: cadetblue;
+  /* height: 300px; */
+  height: fit-content(20em);
+  padding: 15px;
   width: 20vw;
   text-align: center;
+  border: 1px solid lightgrey;
+  border-radius: 10px;
 }

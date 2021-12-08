@@ -32,7 +32,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
+      <Header currentUser={currentUser} />
       {/* categories carousel */}
       {currentUser ? (
         <div>
@@ -41,10 +41,10 @@ function App() {
             currentUser={currentUser}
           />
           {/* TO BE COMBINED WITH HomeAuthenticated in the future */}
-          <AuthenticatedApp
+          {/* <AuthenticatedApp
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
-          />
+          /> */}
         </div>
       ) : (
         <UnauthenticatedApp setCurrentUser={setCurrentUser} />

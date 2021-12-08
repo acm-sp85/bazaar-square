@@ -3,8 +3,9 @@ import "../styles/Map.css";
 
 function Map() {
   return (
-    <div>
-      <h1 className="map">MAP</h1>
+    <div className="map">
+
+      <img className="image__map" src="https://www.techlicious.com/images/misc/google-maps-traffic-670px.jpg"/>
     </div>
   );
 }

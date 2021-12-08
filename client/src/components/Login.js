@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { FormGroup } from "@mui/material";
+import Button from "@mui/material/Button";
+import "../styles/Login.css";
 import { Link } from "react-router-dom";
+import { textAlign } from "@mui/system";
 
 function App() {
   const [email, setEmail] = useState("");
@@ -21,10 +25,9 @@ function App() {
     });
   }, []);
 
-  // TEMPORARY FAKE-LOGING
-
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(email, password);
 
     const requestOptions = {
       method: "POST",
@@ -49,37 +52,33 @@ function App() {
     });
   };
 
-  const logOut = () => {
-    fetch("/logout", { method: "DELETE" }).then(() => {
-      console.log("logged out");
-    });
-  };
-
   const signUp = () => {};
 
   return (
-    // BEM convention
-    <div className="app">
-      <h1>Bazaar Square</h1>
-      <form onSubmit={handleSubmit}>
+    <div>
+      <FormGroup onSubmit={handleSubmit} className="form__box">
         <input
-          className="custom-imputs"
+          className="custom__imputs"
           type="text"
           placeholder="Email..."
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
-          className="custom-imputs"
+          className="custom__imputs"
           type="password"
           placeholder="Password..."
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button>LOGIN</button>
-      </form>
-      <Link to="/signup">Sign Up</Link>
-      <button onClick={logOut}>LogOut</button>
+        <Button onClick={handleSubmit}>LOGIN</Button>
+      </FormGroup>
+      <Button
+        href="/signup"
+        style={{ display: "flex", justifyContent: "center" }}
+      >
+        SIGN UP
+      </Button>
     </div>
   );
 }

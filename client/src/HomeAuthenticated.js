@@ -4,12 +4,17 @@ import Map from "./components/Map";
 import LeftComponent from "./components/LeftComponent";
 import RightComponent from "./components/RightComponent";
 
-function Home() {
+function Home({ currentUser, setCurrentUser }) {
   return (
-    <div className="home">
-      <LeftComponent />
-      <Map />
-      <RightComponent />
+    <div>
+      <div className="home">
+        <LeftComponent />
+        <Map />
+        <RightComponent
+          setCurrentUser={setCurrentUser}
+          currentUser={currentUser}
+        />
+      </div>
     </div>
   );
 }

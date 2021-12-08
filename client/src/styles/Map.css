@@ -1,3 +1,10 @@
 .map {
-  background-color: blueviolet;
+  object-fit: contain;
+  /* width: 100%; */
+  height: 100%;
+}
+
+.image__map {
+  max-width: 500px;
+  border-radius: 10px;
 }

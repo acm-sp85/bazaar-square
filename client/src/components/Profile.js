@@ -33,10 +33,10 @@ function Profile(props) {
 
   return (
     <div>
-      <h1>{userName}</h1>
-      <h1>{phone}</h1>
-      <h1>{city}</h1>
-      <h1>{email}</h1>
+      <h3>{userName}</h3>
+      <h3>{phone}</h3>
+      <h3>{city}</h3>
+      <h3>{email}</h3>
       <DisplayItems items={items} />
     </div>
   );

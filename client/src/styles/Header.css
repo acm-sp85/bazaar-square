@@ -41,10 +41,15 @@
 }
 
 .dropdown {
-  float: right;
   position: absolute;
+  float: right;
   top: 100px;
+  width: 150px;
+  border-radius: 10px;
+  padding: 12px;
+  line-height: 2;
   /* Will need to fix this positioning at some point */
-  margin-left: 93vw;
-  background-color: coral;
+  margin-left: 88vw;
+  background-color: rgb(255, 255, 255);
+    border: 1px solid lightgrey;
 }

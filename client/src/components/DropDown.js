@@ -1,12 +1,28 @@
 import React from "react";
+import Login from "./Login";
 
-function DropDown() {
+function DropDown({ currentUser }) {
+  const logOut = () => {
+    fetch("/logout", { method: "DELETE" }).then(() => {
+      console.log("logged out");
+    });
+  };
   return (
     <div>
-      <p>Option</p>
-      <p>Option</p>
-      <p>Option</p>
-      <p>Option</p>
+      {currentUser ? (
+        <div>
+          <p>Manage items</p>
+          <p>Notifications</p>
+          <p>Your reviews</p>
+          <br />
+          <p onClick={logOut}>Log out</p>
+        </div>
+      ) : (
+        <div>
+          <p>Not Logged in</p>
+          <Login />
+        </div>
+      )}
     </div>
   );
 }
