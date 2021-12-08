@@ -3,7 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./App.css";
 import AuthenticatedApp from "./AuthenticatedApp";
 import Header from "./components/Header";
-import Home from "./components/Home";
+import HomeAuthenticated from "./HomeAuthenticated";
 import UnauthenticatedApp from "./UnauthenticatedApp";
 
 function App() {
@@ -33,18 +33,22 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Home />
-
-      {/* map */}
       {/* categories carousel */}
-      {/* {currentUser ? (
-        <AuthenticatedApp
-          setCurrentUser={setCurrentUser}
-          currentUser={currentUser}
-        />
+      {currentUser ? (
+        <div>
+          <HomeAuthenticated
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
+          />
+          {/* TO BE COMBINED WITH HomeAuthenticated in the future */}
+          <AuthenticatedApp
+            setCurrentUser={setCurrentUser}
+            currentUser={currentUser}
+          />
+        </div>
       ) : (
         <UnauthenticatedApp setCurrentUser={setCurrentUser} />
-      )} */}
+      )}
 
       {/* search page */}
 
