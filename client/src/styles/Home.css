@@ -3,32 +3,38 @@
   margin-top: -30px;
   justify-content: space-between;
   align-items: center;
-  /* position: sticky; */
-  /* z-index: 100; */
   width: 100%;
 }
 
 .left__component {
   height: 300px;
-  /* height: fit-content(20em); */
+
   padding: 15px;
   width: 20vw;
   text-align: center;
   border: 1px solid lightgrey;
   border-radius: 10px;
+  background-color: rgb(245, 245, 236);
 }
 .map {
-  /* background-color: rgb(226, 43, 52); */
+  background-color: rgb(245, 245, 236);
   height: 500px;
   width: 60vw;
   text-align: center;
 }
 .right__component {
-  /* height: 300px; */
+  background-color: rgb(245, 245, 236);
   height: fit-content(20em);
   padding: 15px;
   width: 20vw;
   text-align: center;
   border: 1px solid lightgrey;
   border-radius: 10px;
+}
+
+.carousel__card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }

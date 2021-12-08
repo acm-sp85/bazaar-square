@@ -1,0 +1,23 @@
+.category__card {
+  background-color: rgb(245, 245, 236);
+  display: grid;
+  width: 23vw;
+  height: 250px;
+  border-radius: 15px;
+  margin-right: 7px;
+  margin-left: 7px;
+}
+
+.category__card:hover {
+  transform: scale(1.02);
+  transition: transform 350ms;
+}
+
+.carousel__card {
+  display: flex;
+  overflow-x: scroll;
+  padding-top: 15px;
+}
+.carousel__card::-webkit-scrollbar {
+  display: none;
+}

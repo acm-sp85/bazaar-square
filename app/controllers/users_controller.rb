@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  # remove index before deplying
-   before_action :check_authorization, except: [:create, :index]
+
+   before_action :check_authorization, except: [:create]
      before_action :set_user, only: [:show,:password, :password_confirmation, :logged_id]
 
     def index

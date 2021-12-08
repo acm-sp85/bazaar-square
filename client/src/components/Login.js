@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FormGroup } from "@mui/material";
 import Button from "@mui/material/Button";
+import { useHistory } from "react-router-dom";
 import "../styles/Login.css";
-import { Link } from "react-router-dom";
-import { textAlign } from "@mui/system";
 
 function App() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [currentUser, setCurrentUser] = useState(null);
   const [error, setError] = useState("");
+  const history = useHistory();
   useEffect(() => {
     fetch("/me", {
       credentials: "include",
@@ -41,7 +41,7 @@ function App() {
       if (response.ok) {
         response.json().then((user) => {
           setCurrentUser(user);
-          // history.push("/customers");
+          history.push("/");
         });
       } else {
         response.json().then((error) => {

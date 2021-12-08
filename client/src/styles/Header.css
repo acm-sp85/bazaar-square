@@ -39,6 +39,9 @@
 .header__right :hover {
   cursor: pointer;
 }
+.header__icon :hover {
+  cursor: pointer;
+}
 
 .dropdown {
   position: absolute;
@@ -51,5 +54,9 @@
   /* Will need to fix this positioning at some point */
   margin-left: 88vw;
   background-color: rgb(255, 255, 255);
-    border: 1px solid lightgrey;
+  border: 1px solid lightgrey;
+}
+
+.dropdown p:hover {
+  cursor: pointer;
 }
