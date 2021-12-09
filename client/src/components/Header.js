@@ -9,9 +9,40 @@ import DropDown from "./DropDown";
 
 function Header({ currentUser }) {
   const [dropDownOn, setDropDownOn] = useState(false);
+  const [searchBar, setSearchBar] = useState("");
+  const [searchResults, setSearchResults] = useState("");
+  const [error, setError] = useState("");
   const history = useHistory();
   const exandUserButton = () => {
     setDropDownOn(!dropDownOn);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log(searchBar);
+
+    const searchItem = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+
+    fetch(`/items/find/${searchBar}`, searchItem)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          // DO BETTER ERROR HANDLING
+          console.log("ERROORRRR");
+        }
+      })
+      .then((result) => {
+        setSearchResults(result);
+
+        history.push({
+          pathname: "/search",
+          state: { searchResults: searchResults },
+        });
+      });
   };
 
   return (
@@ -25,7 +56,14 @@ function Header({ currentUser }) {
         alt=""
       />
       <div className="header__center">
-        <input type="text" placeholder="Search Item"></input>
+        <form onSubmit={handleSearch} className="search__form">
+          <input
+            type="text"
+            placeholder="Search Item"
+            value={searchBar}
+            onChange={(e) => setSearchBar(e.target.value)}
+          ></input>
+        </form>
         <SearchIcon />
       </div>
       <div className="header__right" onClick={exandUserButton}>

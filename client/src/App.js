@@ -10,6 +10,7 @@ import ManageItems from "./components/ManageItems";
 import Notifications from "./components/Notifications";
 import Reviews from "./components/Reviews";
 import CategoriesCarousel from "./components/CategoriesCarousel";
+import SearchResults from "./components/SearchResults";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -109,6 +110,17 @@ function App() {
           path="/reviews"
           render={(props) => (
             <Reviews
+              props={props}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/search"
+          render={(props) => (
+            <SearchResults
               props={props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}

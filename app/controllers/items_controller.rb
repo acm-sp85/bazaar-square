@@ -45,6 +45,19 @@ class ItemsController < ApplicationController
       ender json: {error: "Impossible to delete item"}, status: :unprocessable_entity 
     end
   end
+    def find_by_name
+          
+          @name_to_find = Item.where("item_name like ?", "%#{params[:item_name]}%")
+
+          if @name_to_find !=[]
+            # render json: @name_to_find[0].id, status: :ok
+            render json: @name_to_find, status: :ok
+          else 
+            render json: {error: "NO MATCHING ITEMS"} , status: :not_found
+          end
+          
+        end
+
 
   private
 
