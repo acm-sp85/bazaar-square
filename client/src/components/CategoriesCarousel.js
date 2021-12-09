@@ -6,7 +6,10 @@ function CategoriesCarousel({ categories }) {
   return (
     <div className="carousel__card">
       {categories.map((category) => (
-        <CategoryCard category_name={category.category_name} />
+        <CategoryCard
+          category_name={category.category_name}
+          key={category.id}
+        />
       ))}
     </div>
   );
