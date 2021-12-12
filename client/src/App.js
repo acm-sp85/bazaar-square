@@ -129,9 +129,6 @@ function App() {
         />
       </Switch>
 
-      {/* categories carousel */}
-      {/* search page */}
-
       {/* footer */}
     </BrowserRouter>
   );

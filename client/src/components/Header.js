@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "../styles/Header.css";
 import SearchIcon from "@mui/icons-material/Search";
@@ -10,39 +10,22 @@ import DropDown from "./DropDown";
 function Header({ currentUser }) {
   const [dropDownOn, setDropDownOn] = useState(false);
   const [searchBar, setSearchBar] = useState("");
-  const [searchResults, setSearchResults] = useState("");
+  
   const [error, setError] = useState("");
-  const history = useHistory();
+const history = useHistory();
   const exandUserButton = () => {
     setDropDownOn(!dropDownOn);
   };
 
+
+
   const handleSearch = (e) => {
     e.preventDefault();
+    history.push({
+      pathname: "/search",
+      state: searchBar,
+    });
     console.log(searchBar);
-
-    const searchItem = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    };
-
-    fetch(`/items/find/${searchBar}`, searchItem)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          // DO BETTER ERROR HANDLING
-          console.log("ERROORRRR");
-        }
-      })
-      .then((result) => {
-        setSearchResults(result);
-
-        history.push({
-          pathname: "/search",
-          state: { searchResults: searchResults },
-        });
-      });
   };
 
   return (
