@@ -1,3 +1,4 @@
+import { setRef } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
 
@@ -22,7 +23,7 @@ function SearchResults(search) {
       .then((result) => {
         setResults(result);
       });
-  }, [results]);
+  }, [search]);
 
   return (
     <div>

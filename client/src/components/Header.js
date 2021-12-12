@@ -10,14 +10,13 @@ import DropDown from "./DropDown";
 function Header({ currentUser }) {
   const [dropDownOn, setDropDownOn] = useState(false);
   const [searchBar, setSearchBar] = useState("");
-  
+
   const [error, setError] = useState("");
-const history = useHistory();
+  const history = useHistory();
+
   const exandUserButton = () => {
     setDropDownOn(!dropDownOn);
   };
-
-
 
   const handleSearch = (e) => {
     e.preventDefault();
