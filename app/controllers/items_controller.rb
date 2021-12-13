@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-   before_action :check_authorization, except: [:create, :index, :destroy, :update]
+   before_action :check_authorization, except: [:create, :index, :destroy, :update, :show, :find_by_name]
   before_action :set_item, only: [:show, :destroy, :update]
     def index
 
@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
   private
 
   def items_params
-        params.permit(:id, :user_id, :city_id, :description, :item_type_id, :category_id, :item_name)
+        params.permit(:id, :user_id, :city_id, :description, :item_type_id, :category_id, :item_name, :image)
   end
 
   def set_item
