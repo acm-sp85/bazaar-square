@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-   before_action :check_authorization, except: [:create, :index, :destroy, :update, :show, :find_by_name]
+   before_action :check_authorization, except: [:create, :index, :destroy, :update, :find_by_name]
   before_action :set_item, only: [:show, :destroy, :update]
     def index
 

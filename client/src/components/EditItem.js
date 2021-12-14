@@ -1,42 +1,62 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 
-function AddItem({ currentUser }) {
+function EditItem(itemToEdit) {
   const [user, setUser] = useState("");
   const [description, setDescription] = useState("");
   const [category_id, setCategory_id] = useState("");
-  const [user_id, setUser_id] = useState(currentUser.id);
+  // const [user_id, setUser_id] = useState(currentUser.id);
   const [city_id, setCity_id] = useState("");
   const [item_type_id, setItem_type_id] = useState("");
   const [image, setImage] = useState("");
   const [item_name, setItem_name] = useState("");
 
+  useEffect(() => {
+    const config = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+
+    fetch(`/items/find/${itemToEdit.props.history.location.state}`, config)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          // DO BETTER ERROR HANDLING
+          console.log("ERROORRRR");
+        }
+      })
+      .then((result) => {
+        console.log(result);
+      });
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Create item");
-    const requestOptionsCard = {
-      method: "POST",
+    const config = {
+      method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         description,
         category_id,
-        user_id,
         city_id,
         item_type_id,
         image,
         item_name,
       }),
     };
-
-    fetch("/items", requestOptionsCard).then((response) => {
-      if (response.ok) {
-        console.log(response)
-      } else {
-        response.json().then((error) => {
-          console.log(error.error);
-        });
+    fetch(`/items/${itemToEdit.props.history.location.state}`, config).then(
+      (response) => {
+        if (response.ok) {
+          console.log(response);
+        } else {
+          response.json().then((error) => {
+            console.log(error.error);
+          });
+        }
       }
-    });
+    );
   };
   const handleCategory = (e) => {
     setCategory_id(e.target.value);
@@ -47,8 +67,37 @@ function AddItem({ currentUser }) {
   const handleItemType = (e) => {
     setItem_type_id(e.target.value);
   };
+
+  useEffect(() => {
+    const config = {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    };
+
+    fetch(`/items/${itemToEdit.props.history.location.state}`, config)
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          // DO BETTER ERROR HANDLING
+          console.log("ERROORRRR");
+        }
+      })
+      .then((result) => {
+        console.log(result);
+        setDescription(result.description);
+        setCategory_id(result.category_id);
+        setCity_id(result.city_id);
+        setItem_type_id(result.item_type_id);
+        setImage(result.image);
+        setItem_name(result.item_name);
+      });
+  }, [itemToEdit]);
+
   return (
     <div>
+      <h1>Edit Item</h1>
+      <p>{itemToEdit.props.history.location.state}</p>
       <form onSubmit={handleSubmit}>
         <input
           className="custom-imputs"
@@ -103,10 +152,10 @@ function AddItem({ currentUser }) {
         </select>
 
         <br />
-        <Button type="submit">CREATE ITEM</Button>
+        <Button type="submit">UPDATE ITEM</Button>
       </form>
     </div>
   );
 }
 
-export default AddItem;
+export default EditItem;

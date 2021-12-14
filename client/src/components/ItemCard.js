@@ -5,8 +5,11 @@ import EditIcon from "@mui/icons-material/Edit";
 import "../styles/ItemCard.css";
 
 function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
-  const handleClick = () => {
+  const handleClickDelete = () => {
     handleDelete(cardInfo.id);
+  };
+  const handleClickEdit = () => {
+    handleEdit(cardInfo.id);
   };
 
   return (
@@ -27,12 +30,12 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
           <EditIcon
             style={{ fill: "green" }}
             fontSize="small"
-            onClick={handleEdit}
+            onClick={handleClickEdit}
           />
           <DeleteIcon
             color="error"
             fontSize="small"
-            onClick={handleClick}
+            onClick={handleClickDelete}
             key={cardInfo.id}
           />
         </div>

@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ItemCard from "./ItemCard";
 import AddItem from "./AddItem";
 
 function ManageItems({ currentUser }) {
   const [usersItems, setUsersItems] = useState(currentUser.items);
-  const [addItemActive, setAddItemActive] = useState(true);
+  const [addItemActive, setAddItemActive] = useState(false);
+  const [itemToEdit, setItemToEdit] = useState(false);
 
-  const handleEdit = (e) => {
-    //  console.log("edit item " + cardInfo.id);
-    console.log("edit item ");
+  const history = useHistory();
+
+  const handleEdit = (item_id) => {
+    history.push({
+      pathname: "/edit",
+      state: item_id,
+    });
   };
   const handleDelete = (e) => {
     const filteredCards = usersItems.filter((item) => item.id != e);
@@ -34,7 +40,7 @@ function ManageItems({ currentUser }) {
     <div>
       <h1>MANAGE ITEMS</h1>
       <Button onClick={handleAddItemButton}>ADD ITEM</Button>
-      {addItemActive ? <AddItem currentUser={currentUser}/> : <></>}
+      {addItemActive ? <AddItem currentUser={currentUser} /> : <></>}
       <div className="items__grid">
         {usersItems.map((item) => (
           <ItemCard

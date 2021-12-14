@@ -14,7 +14,7 @@ function Header({ currentUser }) {
   const [error, setError] = useState("");
   const history = useHistory();
 
-  const exandUserButton = () => {
+  const expandUserButton = () => {
     setDropDownOn(!dropDownOn);
   };
 
@@ -48,7 +48,7 @@ function Header({ currentUser }) {
         </form>
         <SearchIcon />
       </div>
-      <div className="header__right" onClick={exandUserButton}>
+      <div className="header__right" onClick={expandUserButton}>
         <PersonOutlineIcon />
         {dropDownOn ? <ExpandLessIcon /> : <ExpandMoreIcon />}
       </div>
