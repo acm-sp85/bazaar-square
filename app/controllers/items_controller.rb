@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
    before_action :check_authorization, except: [:create, :index, :destroy, :update, :find_by_name]
   before_action :set_item, only: [:show, :destroy, :update]
+
     def index
 
         items = Item.all
@@ -12,6 +13,13 @@ class ItemsController < ApplicationController
     else
       render json: {error: "Item not found"} , status: :not_found
     end
+  end
+
+  def show_category_items
+
+    items = Category.find(params[:category_id]).items
+       render json:  items, status: :ok
+
   end
 
   def create
@@ -58,6 +66,7 @@ class ItemsController < ApplicationController
           end
           
         end
+
 
 
   private

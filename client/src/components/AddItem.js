@@ -30,7 +30,7 @@ function AddItem({ currentUser }) {
 
     fetch("/items", requestOptionsCard).then((response) => {
       if (response.ok) {
-        console.log(response)
+        console.log(response);
       } else {
         response.json().then((error) => {
           console.log(error.error);
@@ -60,12 +60,12 @@ function AddItem({ currentUser }) {
         <br />
         <select value={category_id} onChange={handleCategory}>
           <option value="nill">Category</option>
-          <option value="1">Art</option>
-          <option value="2">Books</option>
-          <option value="3">Electronics</option>
-          <option value="4">Furniture</option>
-          <option value="5">Games</option>
-          <option value="6">Vehicles</option>
+          <option value="2">Art</option>
+          <option value="4">Books</option>
+          <option value="5">Electronics</option>
+          <option value="6">Furniture</option>
+          <option value="3">Games</option>
+          <option value="1">Vehicles</option>
         </select>
         <br />
 
