@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
    before_action :check_authorization, except: [:create]
      before_action :set_user, only: [:show,:password, :password_confirmation, :logged_id]
+     before_action :set_look_user, only: [:show]
 
     def index
 
@@ -10,8 +11,8 @@ class UsersController < ApplicationController
   end
   def show
     
-    if @user 
-      render json:  @user, serializer: UsersSerializer, status: :ok
+    if @set_look_user 
+      render json:  @set_look_user, serializer: UsersSerializer, status: :ok
     else
       render json: {error: "User not found"} , status: :not_found
     end
@@ -45,6 +46,11 @@ class UsersController < ApplicationController
 
   def user_params
         params.permit(:id, :user_name, :email, :phone, :city_id, :password, :password_confirmation)
+  end
+
+  def set_look_user
+
+    @set_look_user = User.find_by(id: params[:id])
   end
 
   def set_user

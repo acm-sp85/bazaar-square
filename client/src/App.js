@@ -13,6 +13,7 @@ import CategoriesCarousel from "./components/CategoriesCarousel";
 import SearchResults from "./components/SearchResults";
 import EditItem from "./components/EditItem";
 import CategoryPage from "./components/CategoryPage";
+import UserProfilePublic from "./components/UserProfilePublic";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -145,6 +146,17 @@ function App() {
           path="/category"
           render={(props) => (
             <CategoryPage
+              props={props}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/user-profile"
+          render={(props) => (
+            <UserProfilePublic
               props={props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}

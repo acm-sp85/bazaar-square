@@ -12,24 +12,24 @@
   padding: 15px;
   width: 20vw;
   text-align: center;
-  border: 1px solid lightgrey;
-  border-radius: 10px;
-  background-color: rgb(245, 245, 236);
+  /* border: 1px solid lightgrey;
+  border-radius: 10px; */
+  /* background-color: rgb(245, 245, 236); */
 }
 .map {
-  background-color: rgb(245, 245, 236);
+  /* background-color: rgb(245, 245, 236); */
   height: 500px;
   width: 60vw;
   text-align: center;
 }
 .right__component {
-  background-color: rgb(245, 245, 236);
   height: fit-content(20em);
   padding: 15px;
   width: 20vw;
-  text-align: center;
-  border: 1px solid lightgrey;
-  border-radius: 10px;
+  /* text-align: center; */
+  /* background-color: rgb(245, 245, 236); */
+  /* border: 1px solid lightgrey;
+  border-radius: 10px; */
 }
 
 .carousel__card {
