@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get "/items/:id", to: "items#show"
   get "/items/category/:category_id", to: "items#show_category_items"
   get "/items/location/:city_id", to: "items#show_city_items"
+  get "/items/find/:item_name", to: "items#find_by_name"
   get "/users/:id", to: "users#show"
   get "/me", to: "users#logged_id"
-  get "/items/find/:item_name", to: "items#find_by_name"
 
 
   post "/login", to: "sessions#create"

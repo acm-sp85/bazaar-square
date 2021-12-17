@@ -61,8 +61,7 @@ class ItemsController < ApplicationController
     def find_by_name
           
           # @name_to_find = Item.where("item_name like ?", "%#{params[:item_name]}%")
-          # byebug
-          @name_to_find = Item.where("item_name like ?", "%#{params[:item_name]}%")
+          @name_to_find = Item.where("lower(item_name) || item_name like ?", "%#{params[:item_name]}%")
 
           if @name_to_find !=[]
             render json: @name_to_find , each_serializer: ItemsSerializer, status: :ok

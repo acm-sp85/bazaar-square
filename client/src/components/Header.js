@@ -40,6 +40,7 @@ function Header({ currentUser }) {
       <div className="header__center">
         <form onSubmit={handleSearch} className="search__form">
           <input
+            className="search__form"
             type="text"
             placeholder="Search Item"
             value={searchBar}

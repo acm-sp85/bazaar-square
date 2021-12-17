@@ -20,7 +20,6 @@ function LocationPage(city) {
       })
       .then((result) => {
         setResults(result);
-        console.log(result);
       });
   }, []);
   return (
