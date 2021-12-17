@@ -18,13 +18,12 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
       pathname: "/category",
       state: cardInfo.category_id,
     });
-    console.log("Launch search by category");
   };
   const handleClickLocation = () => {
-    // history.push({
-    //   pathname: "/user-profile",
-    //   state: cardInfo.owner_id,
-    // });
+    history.push({
+      pathname: "/location",
+      state: cardInfo.city_id,
+    });
     console.log("Launch search by location");
   };
   const handleClickUser = () => {

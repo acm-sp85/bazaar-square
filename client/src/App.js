@@ -13,6 +13,7 @@ import CategoriesCarousel from "./components/CategoriesCarousel";
 import SearchResults from "./components/SearchResults";
 import EditItem from "./components/EditItem";
 import CategoryPage from "./components/CategoryPage";
+import LocationPage from "./components/LocationPage";
 import UserProfilePublic from "./components/UserProfilePublic";
 
 function App() {
@@ -132,6 +133,17 @@ function App() {
           path="/edit"
           render={(props) => (
             <EditItem
+              props={props}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/location"
+          render={(props) => (
+            <LocationPage
               props={props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}

@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-   before_action :check_authorization, except: [:create, :index, :destroy, :update, :find_by_name, :show_category_items]
+   before_action :check_authorization, except: [:create, :index, :destroy, :update, :find_by_name, :show_category_items, :show_city_items]
   before_action :set_item, only: [:show, :destroy, :update]
 
     def index
@@ -17,9 +17,14 @@ class ItemsController < ApplicationController
 
   def show_category_items
 
-    items = Category.find(params[:category_id]).items
+      items = Category.find(params[:category_id]).items
        render json: items, each_serializer: ItemsSerializer, status: :ok
 
+  end
+
+  def show_city_items
+      items = City.find(params[:city_id]).items
+       render json: items, each_serializer: ItemsSerializer, status: :ok
   end
 
   def create

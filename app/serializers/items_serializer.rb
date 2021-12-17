@@ -1,14 +1,14 @@
 class ItemsSerializer < ActiveModel::Serializer
-  attributes :id, :item_name, :description , :category_name, :owner, :owner_id, :type, :image, :location, :category_id
+  attributes :id, :item_name, :description , :category_name, :owner, :owner_id, :type, :image, :location, :category_id, :city_id
 
   has_many :reviews
 
   def category_name
     object.category.category_name
   end
-  def category_id
-    object.category.id
-  end
+  # def category_id
+  #   object.category.id
+  # end
 
   def owner
     object.user.user_name
