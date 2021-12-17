@@ -1,6 +1,7 @@
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import { useHistory } from "react-router-dom";
 
 import "../styles/ItemCard.css";
 
@@ -10,6 +11,13 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
   };
   const handleClickEdit = () => {
     handleEdit(cardInfo.id);
+  };
+  const history = useHistory();
+  const handleClick = () => {
+    history.push({
+      pathname: "/user-profile",
+      state: cardInfo.owner_id,
+    });
   };
 
   return (
@@ -22,7 +30,7 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
       <p>
         <strong> Location:</strong> {cardInfo.location}
       </p>
-      <p>
+      <p onClick={handleClick}>
         <strong> User:</strong> {cardInfo.owner}
       </p>
       {toEdit ? (

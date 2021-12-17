@@ -28,7 +28,6 @@ function App() {
         res.json().then((user) => {
           setCurrentUser(user);
           setAuthChecked(true);
-          console.log(user);
         });
       } else {
         setAuthChecked(true);
@@ -40,8 +39,6 @@ function App() {
       if (res.ok) {
         res.json().then((categories) => {
           setCategories(categories);
-
-          console.log(categories);
         });
       }
     });
