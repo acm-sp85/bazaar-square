@@ -23,3 +23,6 @@ Things you may want to cover:
 
 * ...
 # bazaar-square
+
+1. Bundle install
+2. cd into Client. npm install

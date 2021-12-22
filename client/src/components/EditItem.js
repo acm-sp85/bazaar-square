@@ -97,7 +97,6 @@ function EditItem(itemToEdit) {
   return (
     <div>
       <h1>Edit Item</h1>
-      <p>{itemToEdit.props.history.location.state}</p>
       <form onSubmit={handleSubmit}>
         <input
           className="custom-imputs"

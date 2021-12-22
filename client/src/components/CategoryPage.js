@@ -29,7 +29,7 @@ function CategoryPage(categoryIndex) {
 
   return (
     <div>
-      {results ? <h1>{results[0].category_name}</h1> : <></>}
+      {results ? <h1>Showing all: {results[0].category_name}</h1> : <></>}
       <div className="items__grid">
         {results ? (
           results.map((item) => <ItemCard cardInfo={item} key={item.id} />)

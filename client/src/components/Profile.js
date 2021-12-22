@@ -9,6 +9,7 @@ function Profile(props) {
   const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
   const [items, setItems] = useState("");
+  const [lastItemsAdded, setLastItemsAdded] = useState("");
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -24,6 +25,7 @@ function Profile(props) {
           setCity(user.location);
           setEmail(user.email);
           setItems(user.items);
+          setLastItemsAdded(user.items.reverse().slice(0, 5));
         });
       } else {
         console.log("Couldn't access User's info");
@@ -37,7 +39,8 @@ function Profile(props) {
       <h3>{phone}</h3>
       <h3>{city}</h3>
       <h3>{email}</h3>
-      <DisplayItems items={items} />
+      <p>Recently added items:</p>
+      <DisplayItems items={lastItemsAdded} />
     </div>
   );
 }

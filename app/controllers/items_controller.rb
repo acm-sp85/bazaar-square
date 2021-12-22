@@ -32,6 +32,7 @@ class ItemsController < ApplicationController
     if item.valid?
       
       render json: item, status: :created
+
     else
       render json: {errors: item.errors.full_messages}, status: :unprocessable_entity 
     end
