@@ -2,17 +2,20 @@ import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useHistory } from "react-router-dom";
+import useHandleClickUsers from "./useHandleClickUser";
 
 import "../styles/ItemCard.css";
 
 function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
+  const history = useHistory();
+  const handleUser = useHandleClickUsers(cardInfo);
+
   const handleClickDelete = () => {
     handleDelete(cardInfo.id);
   };
   const handleClickEdit = () => {
     handleEdit(cardInfo.id);
   };
-  const history = useHistory();
   const handleClickCategory = () => {
     history.push({
       pathname: "/category",
@@ -26,26 +29,32 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
     });
     console.log("Launch search by location");
   };
-  const handleClickUser = () => {
+
+  const handleClickInfo = () => {
     history.push({
-      pathname: "/user-profile",
-      state: cardInfo.owner_id,
+      pathname: "/item-info",
+      state: cardInfo.id,
     });
   };
 
   return (
     <div className="item__card">
-      <img src={cardInfo.image} className="image__card" />
-      <h3>{cardInfo.item_name}</h3>
+      <img
+        src={cardInfo.image}
+        className="image__card"
+        onClick={handleClickInfo}
+      />
+      <h3 onClick={handleClickInfo}>{cardInfo.item_name}</h3>
       <p onClick={handleClickCategory} className="link">
         <strong> Category:</strong> {cardInfo.category_name}
       </p>
       <p onClick={handleClickLocation} className="link">
         <strong> Location:</strong> {cardInfo.location}
       </p>
-      <p onClick={handleClickUser} className="link">
+      <p onClick={handleUser} className="link">
         <strong> User:</strong> {cardInfo.owner}
       </p>
+
       {toEdit ? (
         <div className="link">
           <EditIcon

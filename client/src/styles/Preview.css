@@ -1,0 +1,10 @@
+.card__image {
+  max-width: 80px;
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 10px;
+}
+.items__grid__preview {
+  display: grid;
+  grid-template-columns: 30% 30%;
+}

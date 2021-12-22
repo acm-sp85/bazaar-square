@@ -25,7 +25,7 @@ function Profile(props) {
           setCity(user.location);
           setEmail(user.email);
           setItems(user.items);
-          setLastItemsAdded(user.items.reverse().slice(0, 5));
+          setLastItemsAdded(user.items.reverse().slice(0, 6));
         });
       } else {
         console.log("Couldn't access User's info");
@@ -35,10 +35,7 @@ function Profile(props) {
 
   return (
     <div>
-      <h3>{userName}</h3>
-      <h3>{phone}</h3>
-      <h3>{city}</h3>
-      <h3>{email}</h3>
+      <h3>Hi {userName} !</h3>
       <p>Recently added items:</p>
       <DisplayItems items={lastItemsAdded} />
     </div>

@@ -1,17 +1,12 @@
 import React from "react";
+import "../styles/Preview.css";
 
 function DisplayItems({ items }) {
   return (
-    <div>
+    <div className="items__grid__preview">
       {items.length ? (
         items.map((item) => (
-          <div key={item.id}>
-            <div className="card" className="custom-card">
-              <h5 className="card-title" id={item.user_id}>
-                {item.item_name}
-              </h5>
-            </div>
-          </div>
+          <img src={item.image} className="card__image" key={item.id} />
         ))
       ) : (
         <div></div>

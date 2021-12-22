@@ -2,6 +2,7 @@ import { setRef } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
 
+
 function SearchResults(search) {
   const [results, setResults] = useState(null);
 

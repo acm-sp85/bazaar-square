@@ -15,6 +15,7 @@ import EditItem from "./components/EditItem";
 import CategoryPage from "./components/CategoryPage";
 import LocationPage from "./components/LocationPage";
 import UserProfilePublic from "./components/UserProfilePublic";
+import ItemInfo from "./components/ItemInfo";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -166,6 +167,17 @@ function App() {
           path="/user-profile"
           render={(props) => (
             <UserProfilePublic
+              props={props}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/item-info"
+          render={(props) => (
+            <ItemInfo
               props={props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
