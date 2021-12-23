@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-   before_action :check_authorization, except: [:create, :index, :destroy, :update, :find_by_name, :show_category_items, :show_city_items]
+   before_action :check_authorization, except: [:create, :index, :destroy, :update, :find_by_name, :show_category_items, :show_city_items, :last_items_added]
   before_action :set_item, only: [:show, :destroy, :update]
 
     def index
@@ -25,6 +25,16 @@ class ItemsController < ApplicationController
   def show_city_items
       items = City.find(params[:city_id]).items
        render json: items, each_serializer: ItemsSerializer, status: :ok
+  end
+
+  def last_items_added
+    last_added = Item.all.reverse().slice(0, 6)
+    if last_added
+      render json: last_added, each_serializer: ItemsSerializer, status: :ok
+    else
+      render json: {errors: last_items_added.errors.full_messages}, status: :unprocessable_entity 
+
+    end
   end
 
   def create

@@ -1,10 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/Home.css";
+import DisplayItems from "./DisplayItems";
 
 function LeftComponent() {
+  const [lastItemsAdded, setLastItemsAdded] = useState("");
+
+  useEffect(() => {
+    fetch("/items/find/last-added", {
+      credentials: "include",
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((last_items_added) => {
+          console.log(last_items_added);
+          setLastItemsAdded(last_items_added);
+        });
+      } else {
+        response.json().then((error) => {
+          console.log(error);
+        });
+      }
+    });
+  }, []);
+
   return (
     <div>
       <h1 className="left__component">LEFT</h1>
+      <DisplayItems items={lastItemsAdded} />
     </div>
   );
 }

@@ -36,6 +36,8 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
       <p onClick={handleUser} className="link">
         <strong> User:</strong> {cardInfo.owner}
       </p>
+      <br />
+      <p><strong>{cardInfo.type}</strong></p>
 
       {toEdit ? (
         <div className="link">

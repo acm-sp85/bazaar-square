@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :items
   resources :users
 
+  get "/items/find/last-added", to: "items#last_items_added"
   get "/items/:id", to: "items#show"
   get "/items/category/:category_id", to: "items#show_category_items"
   get "/items/location/:city_id", to: "items#show_city_items"
