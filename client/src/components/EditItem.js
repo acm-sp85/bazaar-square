@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
+import "../styles/EditItems.css";
 
 function EditItem(itemToEdit) {
   const [user, setUser] = useState("");
@@ -17,7 +18,7 @@ function EditItem(itemToEdit) {
       headers: { "Content-Type": "application/json" },
     };
 
-    fetch(`/items/find/${itemToEdit.props.history.location.state}`, config)
+    fetch(`/items/${itemToEdit.props.history.location.state}`, config)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -28,8 +29,34 @@ function EditItem(itemToEdit) {
       })
       .then((result) => {
         console.log(result);
+        setDescription(result.description);
+        setCategory_id(result.category_id);
+        setCity_id(result.city_id);
+        setItem_type_id(result.item_type_id);
+        setImage(result.image);
+        setItem_name(result.item_name);
       });
-  }, []);
+  }, [itemToEdit]);
+
+  // useEffect(() => {
+  //   const config = {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //   };
+
+  //   fetch(`/items/find/${itemToEdit.props.history.location.state}`, config)
+  //     .then((response) => {
+  //       if (response.ok) {
+  //         return response.json();
+  //       } else {
+  //         // DO BETTER ERROR HANDLING
+  //         console.log("ERROORRRR");
+  //       }
+  //     })
+  //     .then((result) => {
+  //       console.log(result);
+  //     });
+  // }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,34 +95,8 @@ function EditItem(itemToEdit) {
     setItem_type_id(e.target.value);
   };
 
-  useEffect(() => {
-    const config = {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    };
-
-    fetch(`/items/${itemToEdit.props.history.location.state}`, config)
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          // DO BETTER ERROR HANDLING
-          console.log("ERROORRRR");
-        }
-      })
-      .then((result) => {
-        console.log(result);
-        setDescription(result.description);
-        setCategory_id(result.category_id);
-        setCity_id(result.city_id);
-        setItem_type_id(result.item_type_id);
-        setImage(result.image);
-        setItem_name(result.item_name);
-      });
-  }, [itemToEdit]);
-
   return (
-    <div>
+    <div className="centered">
       <h1>Edit Item</h1>
       <form onSubmit={handleSubmit}>
         <input

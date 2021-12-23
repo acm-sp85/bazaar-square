@@ -1,0 +1,10 @@
+.centered {
+  margin: auto;
+  background-color: rgb(255, 255, 255);
+  width: 27vw;
+  height: 370px;
+  border-radius: 10px;
+  padding: 30px;
+  overflow: hidden;
+  box-shadow: 0px 6px 18px -9px rgb(0, 0, 0, 0.75);
+}

@@ -36,7 +36,7 @@ function Profile(props) {
   return (
     <div>
       <h3>Hi {userName} !</h3>
-      <p>Recently added items:</p>
+      <p>Your recently added items:</p>
       <DisplayItems items={lastItemsAdded} />
     </div>
   );

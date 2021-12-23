@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 
-function useHandleClickUser(cardInfo) {
+function useHandleClickUser(owner_id) {
   const history = useHistory();
   const handleClickUser = () => {
     history.push({
       pathname: "/user-profile",
-      state: cardInfo.owner_id,
+      state: owner_id,
     });
   };
 
