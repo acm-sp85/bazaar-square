@@ -57,13 +57,13 @@ function ItemInfo(info) {
               color="text.secondary"
               gutterBottom
             >
-              ITEM INFO
+              Item status: {itemInfo.type}
             </Typography>
             <Typography variant="h5" component="div">
               {itemInfo.item_name}
             </Typography>
             <Typography sx={{ mb: 1.5 }} color="text.secondary">
-              {itemInfo.category_name}
+              {itemInfo.category_name} - {itemInfo.location}
             </Typography>
             <Typography variant="body2">
               {itemInfo.description}
