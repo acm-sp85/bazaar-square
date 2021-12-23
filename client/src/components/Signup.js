@@ -48,7 +48,7 @@ function Signup({ setCurrentUser }) {
   };
 
   return (
-    <div>
+    <div className="centered">
       <h3>SIGNUP</h3>
       <form onSubmit={handleSubmit}>
         <input

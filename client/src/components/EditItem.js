@@ -38,26 +38,6 @@ function EditItem(itemToEdit) {
       });
   }, [itemToEdit]);
 
-  // useEffect(() => {
-  //   const config = {
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json" },
-  //   };
-
-  //   fetch(`/items/find/${itemToEdit.props.history.location.state}`, config)
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         return response.json();
-  //       } else {
-  //         // DO BETTER ERROR HANDLING
-  //         console.log("ERROORRRR");
-  //       }
-  //     })
-  //     .then((result) => {
-  //       console.log(result);
-  //     });
-  // }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Create item");
@@ -146,9 +126,10 @@ function EditItem(itemToEdit) {
         <br />
         <select value={item_type_id} onChange={handleItemType}>
           {/* <option value="nill">Borough</option> */}
-          <option value="1">Share</option>
-          <option value="2">Donate</option>
-          <option value="3">Sell</option>
+          <option value="1">Sell</option>
+          <option value="2">Trade</option>
+          <option value="3">Borrow</option>
+          <option value="4">Donate</option>
         </select>
 
         <br />

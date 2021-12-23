@@ -16,6 +16,7 @@ import CategoryPage from "./components/CategoryPage";
 import LocationPage from "./components/LocationPage";
 import UserProfilePublic from "./components/UserProfilePublic";
 import ItemInfo from "./components/ItemInfo";
+import Footer from "./components/Footer";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -52,6 +53,7 @@ function App() {
 
   return (
     <BrowserRouter>
+      <h3 className="page__title">Donate / Borrow / Sale</h3>
       <Header currentUser={currentUser} />
 
       <Switch>
@@ -187,6 +189,7 @@ function App() {
       </Switch>
 
       {/* footer */}
+      <Footer />
     </BrowserRouter>
   );
 }

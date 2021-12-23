@@ -9,3 +9,8 @@ body {
 .centered__itemInfo {
   margin: auto;
 }
+
+.page__title {
+  text-align: center;
+  margin-top: 15px;
+}

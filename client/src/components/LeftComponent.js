@@ -24,7 +24,7 @@ function LeftComponent() {
 
   return (
     <div>
-      <h1 className="left__component">LEFT</h1>
+      <h3>Last items added to app:</h3>
       <DisplayItems items={lastItemsAdded} />
     </div>
   );

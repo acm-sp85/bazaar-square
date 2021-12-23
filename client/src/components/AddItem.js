@@ -97,9 +97,10 @@ function AddItem({ currentUser }) {
         <br />
         <select value={item_type_id} onChange={handleItemType}>
           {/* <option value="nill">Borough</option> */}
-          <option value="1">Share</option>
-          <option value="2">Donate</option>
-          <option value="3">Sell</option>
+          <option value="1">Sell</option>
+          <option value="2">Trade</option>
+          <option value="3">Borrow</option>
+          <option value="4">Donate</option>
         </select>
 
         <br />
