@@ -17,11 +17,13 @@ import LocationPage from "./components/LocationPage";
 import UserProfilePublic from "./components/UserProfilePublic";
 import ItemInfo from "./components/ItemInfo";
 import Footer from "./components/Footer";
+import Banner from "./components/Banner";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [authChecked, setAuthChecked] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [types, setTypes] = useState([]);
 
   useEffect(() => {
     fetch("/me", {
@@ -45,6 +47,15 @@ function App() {
         });
       }
     });
+    // fetch("/item_types", {
+    //   credentials: "include",
+    // }).then((res) => {
+    //   if (res.ok) {
+    //     res.json().then((types) => {
+    //       setTypes(types);
+    //     });
+    //   }
+    // });
   }, []);
 
   if (!authChecked) {
@@ -53,7 +64,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <h3 className="page__title">Donate / Borrow / Sale</h3>
+      <h3 className="page__title">Donate / Borrow / Sell</h3>
       <Header currentUser={currentUser} />
 
       <Switch>
@@ -73,6 +84,7 @@ function App() {
                 <UnauthenticatedApp setCurrentUser={setCurrentUser} />
               )}
               <CategoriesCarousel categories={categories} />
+              <Banner />
             </div>
           )}
         />
