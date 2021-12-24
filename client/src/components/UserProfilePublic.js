@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
+import ReviewsPannel from "./ReviewsPannel";
 import "../styles/UserProfile.css";
 
 function UserProfilePublic(owner_id) {
@@ -45,7 +46,7 @@ function UserProfilePublic(owner_id) {
               <h3>
                 Reviews:{" "}
                 {profile.reviews.map((review) => (
-                  <p key={review.id}>{review.review_content}</p>
+                  <ReviewsPannel review={review} />
                 ))}
               </h3>
             ) : (

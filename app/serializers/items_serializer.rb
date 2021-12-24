@@ -6,9 +6,7 @@ class ItemsSerializer < ActiveModel::Serializer
   def category_name
     object.category.category_name
   end
-  # def category_id
-  #   object.category.id
-  # end
+
 
   def owner
     object.user.user_name
