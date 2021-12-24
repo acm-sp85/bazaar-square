@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import ItemCard from "./ItemCard";
+import "../styles/UserProfile.css";
 
 function UserProfilePublic(owner_id) {
-  const [results, setResults] = useState(null);
+  const [profile, setProfile] = useState(null);
+  const [visibleReviews, setVisibleReviews] = useState(false);
 
   useEffect(() => {
     const config = {
@@ -21,20 +23,44 @@ function UserProfilePublic(owner_id) {
         }
       })
       .then((result) => {
-        setResults(result.items);
+        setProfile(result);
       });
   }, []);
 
+  const showReviews = () => {
+    setVisibleReviews(!visibleReviews);
+    console.log("hey");
+  };
+
   return (
     <div>
-      <h1>Public Profile</h1>
-      <div className="items__grid">
-        {results ? (
-          results.map((item) => <ItemCard cardInfo={item} key={item.id} />)
-        ) : (
-          <></>
-        )}
-      </div>
+      {profile ? (
+        <div>
+          <div className="user__profile">
+            <h1>{profile.user_name}</h1>
+            <h3>Email: {profile.email}</h3>
+            <h3>Location: {profile.location}</h3>
+            <h3 onClick={showReviews}>Reviews({profile.reviews.length})</h3>
+            {visibleReviews ? (
+              <h3>
+                Reviews:{" "}
+                {profile.reviews.map((review) => (
+                  <p key={review.id}>{review.review_content}</p>
+                ))}
+              </h3>
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className="items__grid">
+            {profile.items.map((item) => (
+              <ItemCard cardInfo={item} key={item.id} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }
