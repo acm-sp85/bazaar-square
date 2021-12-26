@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/Home.css";
-import Map from "./components/Map";
+import MapComponent from "./components/MapComponent";
 import LeftComponent from "./components/LeftComponent";
 import RightComponent from "./components/RightComponent";
 
@@ -9,7 +9,7 @@ function Home({ currentUser, setCurrentUser }) {
     <div>
       <div className="home">
         <LeftComponent />
-        <Map />
+        <MapComponent />
         <RightComponent
           setCurrentUser={setCurrentUser}
           currentUser={currentUser}

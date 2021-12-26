@@ -198,8 +198,6 @@ function App() {
           )}
         />
       </Switch>
-
-      {/* footer */}
       <Footer />
     </BrowserRouter>
   );
