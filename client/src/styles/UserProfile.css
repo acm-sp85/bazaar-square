@@ -9,7 +9,12 @@
 }
 
 .review__card {
-  background-color: lightsteelblue;
+  display: grid;
+  grid-template-columns: 30% 30% 30%;
+  margin-left: 25px;
+  padding-top: 5px;
+  background-color: rgb(17, 74, 148);
   padding: 15px;
-  width: 150px;
+  /* width: auto; */
+  /* height: fit-content; */
 }

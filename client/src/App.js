@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.css";
-import AuthenticatedApp from "./AuthenticatedApp";
 import Header from "./components/Header";
 import HomeAuthenticated from "./HomeAuthenticated";
 import UnauthenticatedApp from "./UnauthenticatedApp";
@@ -17,6 +16,7 @@ import LocationPage from "./components/LocationPage";
 import UserProfilePublic from "./components/UserProfilePublic";
 import ItemInfo from "./components/ItemInfo";
 import Footer from "./components/Footer";
+import AddReview from "./components/AddReview";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -180,6 +180,17 @@ function App() {
           path="/item-info"
           render={(props) => (
             <ItemInfo
+              props={props}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/add-review"
+          render={(props) => (
+            <AddReview
               props={props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
