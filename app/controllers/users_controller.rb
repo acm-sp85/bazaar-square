@@ -38,6 +38,8 @@ class UsersController < ApplicationController
 
 
 
+
+
   private
   # def check_authorization
   #    return render json: { error: "must be logged in!"} , status: :unauthorized unless session.include? :user_id

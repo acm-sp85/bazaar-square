@@ -1,5 +1,5 @@
 class ItemsSerializer < ActiveModel::Serializer
-  attributes :id, :item_name, :description , :category_name, :owner, :owner_id, :type, :image, :location, :category_id, :city_id, :item_type_id
+  attributes :id, :item_name, :description , :category_name, :owner, :owner_id, :type, :image, :location, :category_id, :city_id, :item_type_id, :owner_reviews
 
   has_many :reviews
 
@@ -24,4 +24,12 @@ class ItemsSerializer < ActiveModel::Serializer
   def location
     object.city.city_name
   end
+
+  def owner_reviews
+    object.user.reviews
+  end
+  
+  # def owner_rating_average
+  #   object.user.rating_average
+  # end
 end

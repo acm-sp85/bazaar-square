@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get "/items/find/:item_name", to: "items#find_by_name"
   get "/items/count/total", to: "items#total"
   get "/users/:id", to: "users#show"
+  get "/users/:id/rating", to: "users#rating_average"
   get "/me", to: "users#logged_id"
 
 

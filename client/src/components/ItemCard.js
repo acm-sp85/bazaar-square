@@ -42,6 +42,7 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
       </p>
       <p onClick={handleUser} className="link">
         <strong> User:</strong> {cardInfo.owner}
+        {/* <strong> User:</strong> {cardInfo.owner}({cardInfo.owner_reviews.length}⭐) */}
       </p>
       <br />
       <p onClick={handleClickType} className="link">

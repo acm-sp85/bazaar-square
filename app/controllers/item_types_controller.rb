@@ -1,4 +1,5 @@
 class ItemTypesController < ApplicationController
+  before_action :check_authorization, except: [:show]
     before_action :set_item_type, only: [:show]
 
 def index
