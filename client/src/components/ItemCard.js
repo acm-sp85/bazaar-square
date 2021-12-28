@@ -6,6 +6,7 @@ import useHandleClickUsers from "./useHandleClickUser";
 import useHandleClickInfo from "./useHandleClickInfo";
 import useHandleClickLocation from "./useHandleClickLocation";
 import useHandleClickCategory from "./useHandleClickCategory";
+import useHandleClickType from "./useHandleClickType";
 
 import "../styles/ItemCard.css";
 
@@ -15,6 +16,7 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
   const handleInfo = useHandleClickInfo(cardInfo.id);
   const handleLocation = useHandleClickLocation(cardInfo.city_id);
   const handleClickCategory = useHandleClickCategory(cardInfo.category_id);
+  const handleClickType = useHandleClickType(cardInfo.item_type_id);
 
   const handleClickDelete = () => {
     handleDelete(cardInfo.id);
@@ -37,7 +39,9 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
         <strong> User:</strong> {cardInfo.owner}
       </p>
       <br />
-      <p><strong>{cardInfo.type}</strong></p>
+      <p onClick={handleClickType}>
+        <strong>{cardInfo.type}</strong>
+      </p>
 
       {toEdit ? (
         <div className="link">

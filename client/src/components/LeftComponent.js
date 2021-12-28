@@ -11,7 +11,6 @@ function LeftComponent() {
     }).then((response) => {
       if (response.ok) {
         response.json().then((last_items_added) => {
-          console.log(last_items_added);
           setLastItemsAdded(last_items_added);
         });
       } else {

@@ -28,39 +28,42 @@ function Header({ currentUser }) {
   };
 
   return (
-    <div className="header">
-      <img
-        className="header__icon"
-        onClick={() => {
-          history.push("/");
-        }}
-        src="https://dcassetcdn.com/design_img/3096767/681086/681086_17136101_3096767_2dbcc4ed_image.png"
-        alt=""
-      />
-      <div className="header__center">
-        <form onSubmit={handleSearch} className="search__form">
-          <input
-            className="search__form"
-            type="text"
-            placeholder="Search Item"
-            value={searchBar}
-            onChange={(e) => setSearchBar(e.target.value)}
-          ></input>
-        </form>
-        <SearchIcon />
-      </div>
-      <div className="header__right" onClick={expandUserButton}>
-        <PersonOutlineIcon />
-        {dropDownOn ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-      </div>
-      {dropDownOn ? (
-        <div className="dropdown">
-          <DropDown currentUser={currentUser} />
+    <>
+      <h3 className="page__title">Donate / Borrow / Sell / Trade</h3>
+      <div className="header">
+        <img
+          className="header__icon"
+          onClick={() => {
+            history.push("/");
+          }}
+          src="https://dcassetcdn.com/design_img/3096767/681086/681086_17136101_3096767_2dbcc4ed_image.png"
+          alt=""
+        />
+        <div className="header__center">
+          <form onSubmit={handleSearch} className="search__form">
+            <input
+              className="search__form"
+              type="text"
+              placeholder="Search Item"
+              value={searchBar}
+              onChange={(e) => setSearchBar(e.target.value)}
+            ></input>
+          </form>
+          <SearchIcon />
         </div>
-      ) : (
-        <></>
-      )}
-    </div>
+        <div className="header__right" onClick={expandUserButton}>
+          <PersonOutlineIcon />
+          {dropDownOn ? <ExpandLessIcon /> : <ExpandMoreIcon />}
+        </div>
+        {dropDownOn ? (
+          <div className="dropdown">
+            <DropDown currentUser={currentUser} />
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
+    </>
   );
 }
 

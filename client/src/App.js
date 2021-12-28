@@ -17,6 +17,7 @@ import UserProfilePublic from "./components/UserProfilePublic";
 import ItemInfo from "./components/ItemInfo";
 import Footer from "./components/Footer";
 import AddReview from "./components/AddReview";
+import ItemTypeCategory from "./components/ItemTypeCategory";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -53,7 +54,6 @@ function App() {
 
   return (
     <BrowserRouter>
-      <h3 className="page__title">Donate / Borrow / Sell</h3>
       <Header currentUser={currentUser} />
 
       <Switch>
@@ -191,6 +191,17 @@ function App() {
           path="/add-review"
           render={(props) => (
             <AddReview
+              props={props}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/item-type"
+          render={(props) => (
+            <ItemTypeCategory
               props={props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
