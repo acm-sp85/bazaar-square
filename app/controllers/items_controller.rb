@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-   before_action :check_authorization, except: [:create, :index, :destroy, :update, :find_by_name, :show_category_items, :show_city_items, :last_items_added]
+   before_action :check_authorization, except: [:create, :index, :destroy, :update, :find_by_name, :show_category_items, :show_city_items, :last_items_added, :total]
   before_action :set_item, only: [:show, :destroy, :update]
 
     def index
@@ -13,6 +13,12 @@ class ItemsController < ApplicationController
     else
       render json: {error: "Item not found"} , status: :not_found
     end
+  end
+
+  def total
+    total = Item.count
+    render json: total, status: :ok
+
   end
 
   def show_category_items

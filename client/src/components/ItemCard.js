@@ -16,7 +16,10 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
   const handleInfo = useHandleClickInfo(cardInfo.id);
   const handleLocation = useHandleClickLocation(cardInfo.city_id);
   const handleClickCategory = useHandleClickCategory(cardInfo.category_id);
-  const handleClickType = useHandleClickType(cardInfo.item_type_id);
+  const handleClickType = useHandleClickType(
+    cardInfo.item_type_id,
+    cardInfo.type
+  );
 
   const handleClickDelete = () => {
     handleDelete(cardInfo.id);

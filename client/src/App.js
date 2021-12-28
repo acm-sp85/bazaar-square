@@ -18,6 +18,7 @@ import ItemInfo from "./components/ItemInfo";
 import Footer from "./components/Footer";
 import AddReview from "./components/AddReview";
 import ItemTypeCategory from "./components/ItemTypeCategory";
+import ItemTypesCarousel from "./components/ItemTypesCarousel";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -73,6 +74,7 @@ function App() {
                 <UnauthenticatedApp setCurrentUser={setCurrentUser} />
               )}
               <CategoriesCarousel categories={categories} />
+              <ItemTypesCarousel />
             </div>
           )}
         />

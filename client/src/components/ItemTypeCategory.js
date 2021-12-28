@@ -11,6 +11,7 @@ function ItemTypeCategory(type) {
     };
 
     fetch(`/item_types/${type.props.history.location.state}`, config)
+      // fetch(`/item_types/2`, config)
       .then((response) => {
         if (response.ok) {
           return response.json();
@@ -25,7 +26,7 @@ function ItemTypeCategory(type) {
   }, []);
   return (
     <div>
-      {results ? <h1>Showing all:</h1> : <></>}
+      {results ? <h1>Showing all items for {results.name}:</h1> : <></>}
       <div className="items__grid">
         {results ? (
           results.items.map((item) => (
