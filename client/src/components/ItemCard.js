@@ -31,7 +31,9 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
   return (
     <div className="item__card">
       <img src={cardInfo.image} className="image__card" onClick={handleInfo} />
-      <h3 onClick={handleInfo}>{cardInfo.item_name}</h3>
+      <h3 onClick={handleInfo} className="link">
+        {cardInfo.item_name}
+      </h3>
       <p onClick={handleClickCategory} className="link">
         <strong> Category:</strong> {cardInfo.category_name}
       </p>
@@ -42,7 +44,7 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
         <strong> User:</strong> {cardInfo.owner}
       </p>
       <br />
-      <p onClick={handleClickType}>
+      <p onClick={handleClickType} className="link">
         <strong>{cardInfo.type}</strong>
       </p>
 

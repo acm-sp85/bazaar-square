@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
 import "../styles/Preview.css";
 
+import { useHistory } from "react-router-dom";
+
 function DisplayItems({ items }) {
+  const history = useHistory();
+  const handleInfo = (e) => {
+    e.preventDefault();
+    history.push({
+      pathname: "/item-info",
+      state: e.target.id,
+    });
+  };
   return (
     <div className="items__grid__preview">
       {items.length ? (
@@ -11,7 +21,7 @@ function DisplayItems({ items }) {
             className="card__image"
             id={item.id}
             key={item.id}
-            // onClick={triggerHandleInfo}
+            onClick={handleInfo}
           />
         ))
       ) : (
