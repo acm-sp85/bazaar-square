@@ -28,8 +28,4 @@ class ItemsSerializer < ActiveModel::Serializer
   def owner_reviews
     object.user.reviews
   end
-  
-  # def owner_rating_average
-  #   object.user.rating_average
-  # end
 end

@@ -47,7 +47,7 @@ class ItemsController < ApplicationController
     item = Item.create(items_params)
     if item.valid?
       
-      render json: item, status: :created
+      render json: item, status: :created , serializer: ItemsSerializer
 
     else
       render json: {errors: item.errors.full_messages}, status: :unprocessable_entity 
@@ -79,7 +79,7 @@ class ItemsController < ApplicationController
           
       # @name_to_find = Item.where("item_name like ?", "%#{params[:item_name]}%")
       # @name_to_find = Item.where("lower(item_name) || item_name like ?", "%#{params[:item_name]}%")
-          @name_to_find = Item.joins(:user).joins(:city).joins(:item_type).joins(:category).where("category_name || lower(category_name) || name || lower(name) || city_name || lower(city_name)|| lower(item_name) || item_name || user_name || lower(user_name) like ?", "%#{params[:item_name]}%")
+          @name_to_find = Item.joins(:user).joins(:city).joins(:item_type).joins(:category).where("description || lower(description) || category_name || lower(category_name) || name || lower(name) || city_name || lower(city_name)|| lower(item_name) || item_name || user_name || lower(user_name) like ?", "%#{params[:item_name]}%")
 
           if @name_to_find !=[]
             render json: @name_to_find , each_serializer: ItemsSerializer, status: :ok

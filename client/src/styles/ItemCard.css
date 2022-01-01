@@ -1,6 +1,6 @@
 .item__card {
   background-color: rgb(255, 255, 255);
-  width: 27vw;
+  width: 20vw;
   height: 450px;
   border-radius: 10px;
   margin: 20px;
@@ -10,6 +10,9 @@
   box-shadow: 0px 6px 18px -9px rgb(0, 0, 0, 0.75);
 }
 
+.grid__container {
+  /* background-color: rgb(28, 68, 121); */
+}
 .item__card:hover {
   transform: scale(1.02);
   transition: transform 350ms;
@@ -17,13 +20,14 @@
 
 .items__grid {
   display: grid;
-  grid-template-columns: 30% 30% 30%;
-  margin-left: 25px;
+  grid-template-columns: 33% 33% 33%;
+  margin-left: auto;
+
   padding-top: 5px;
 }
 
 .image__card {
-  object-fit: fill;
+  object-fit: cover;
   width: 100%;
   max-height: 200px;
   cursor: pointer;

@@ -40,17 +40,25 @@ function ManageItems({ currentUser }) {
     <div>
       <h1>MANAGE ITEMS</h1>
       <Button onClick={handleAddItemButton}>ADD ITEM</Button>
-      {addItemActive ? <AddItem currentUser={currentUser} /> : <></>}
+      {addItemActive ? (
+        <AddItem currentUser={currentUser} setUsersItems={setUsersItems} />
+      ) : (
+        <></>
+      )}
       <div className="items__grid">
-        {usersItems.map((item) => (
-          <ItemCard
-            cardInfo={item}
-            toEdit={true}
-            key={item.id}
-            handleDelete={handleDelete}
-            handleEdit={handleEdit}
-          />
-        ))}
+        {usersItems.length > 0 ? (
+          usersItems.map((item) => (
+            <ItemCard
+              cardInfo={item}
+              toEdit={true}
+              key={item.id}
+              handleDelete={handleDelete}
+              handleEdit={handleEdit}
+            />
+          ))
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );

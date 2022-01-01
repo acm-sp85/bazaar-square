@@ -15,6 +15,7 @@ function Signup({ setCurrentUser }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("Creating user");
 
     const requestOptions = {
       method: "POST",
@@ -31,13 +32,14 @@ function Signup({ setCurrentUser }) {
 
     fetch("/users", requestOptions).then((response) => {
       if (response.ok) {
-        response.json().then((shop) => {
-          setCurrentUser(shop);
+        response.json().then((info) => {
+          setCurrentUser(info);
         });
       } else {
         response.json().then((error) => {
           console.log(error.errors);
           setError(error.errors);
+          console.log(error);
         });
       }
     });
@@ -118,9 +120,7 @@ function Signup({ setCurrentUser }) {
         <button className="custom-button" type="submit">
           SIGNUP
         </button>
-        <p>
-          <Link to="/login">Log in</Link>
-        </p>
+        <p>{/* <Link to="/login">Log in</Link> */}</p>
       </form>
     </div>
   );

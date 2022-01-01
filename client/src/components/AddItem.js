@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
 
-function AddItem({ currentUser }) {
+function AddItem({ currentUser, setUsersItems }) {
   const [user, setUser] = useState("");
   const [description, setDescription] = useState("");
   const [category_id, setCategory_id] = useState("");
@@ -28,15 +28,9 @@ function AddItem({ currentUser }) {
       }),
     };
 
-    fetch("/items", requestOptionsCard).then((response) => {
-      if (response.ok) {
-        console.log(response);
-      } else {
-        response.json().then((error) => {
-          console.log(error.error);
-        });
-      }
-    });
+    fetch("/items", requestOptionsCard)
+      .then((response) => response.json())
+      .then((data) => setUsersItems([...currentUser.items, data]));
   };
   const handleCategory = (e) => {
     setCategory_id(e.target.value);
@@ -96,7 +90,7 @@ function AddItem({ currentUser }) {
         />
         <br />
         <select value={item_type_id} onChange={handleItemType}>
-          {/* <option value="nill">Borough</option> */}
+          <option value="nill">Type</option>
           <option value="1">Sell</option>
           <option value="2">Trade</option>
           <option value="3">Borrow</option>
