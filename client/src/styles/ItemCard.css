@@ -9,10 +9,10 @@
   margin-left: 7px;
   box-shadow: 0px 6px 18px -9px rgb(0, 0, 0, 0.75);
 }
-
+/* 
 .grid__container {
-  /* background-color: rgb(28, 68, 121); */
-}
+  background-color: rgb(28, 68, 121);
+} */
 .item__card:hover {
   transform: scale(1.02);
   transition: transform 350ms;
@@ -22,7 +22,7 @@
   display: grid;
   grid-template-columns: 33% 33% 33%;
   margin-left: auto;
-
+  background-color: turquoise;
   padding-top: 5px;
 }
 

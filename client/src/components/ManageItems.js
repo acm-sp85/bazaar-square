@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 import ItemCard from "./ItemCard";
 import AddItem from "./AddItem";
+import RightComponent from "./RightComponent";
 
-function ManageItems({ currentUser }) {
+function ManageItems({ currentUser, setCurrentUser }) {
   const [usersItems, setUsersItems] = useState(currentUser.items);
   const [addItemActive, setAddItemActive] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(false);
@@ -39,6 +40,10 @@ function ManageItems({ currentUser }) {
   return (
     <div>
       <h1>MANAGE ITEMS</h1>
+      {/* <RightComponent
+        setCurrentUser={setCurrentUser}
+        currentUser={currentUser}
+      /> */}
       <Button onClick={handleAddItemButton}>ADD ITEM</Button>
       {addItemActive ? (
         <AddItem currentUser={currentUser} setUsersItems={setUsersItems} />

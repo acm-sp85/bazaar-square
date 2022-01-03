@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -11,6 +12,8 @@ import { borderRadius } from "@mui/system";
 
 function ItemInfo(info) {
   const [itemInfo, setItemInfo] = useState(info);
+  const [user, setUser] = useState(info.currentUser);
+  const history = useHistory();
   const bull = (
     <Box
       component="span"
@@ -25,6 +28,7 @@ function ItemInfo(info) {
       credentials: "include",
     }).then((res) => {
       if (res.ok) {
+        console.log(info);
         res.json().then((item_info) => {
           setItemInfo(item_info);
         });
@@ -71,7 +75,20 @@ function ItemInfo(info) {
             </Typography>
           </CardContent>
           <CardActions>
-            <Button size="small">Contact owner - {itemInfo.owner}</Button>
+            {user ? (
+              <Button size="small">Contact owner - {itemInfo.owner}</Button>
+            ) : (
+              <Button
+                size="small"
+                onClick={() => {
+                  history.push({
+                    pathname: "/login",
+                  });
+                }}
+              >
+                Log in to contact owner
+              </Button>
+            )}
           </CardActions>
         </React.Fragment>
       </Box>

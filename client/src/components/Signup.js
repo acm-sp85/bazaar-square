@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import { FormGroup } from "@mui/material";
+import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import "../App.css";
 
@@ -52,7 +53,7 @@ function Signup({ setCurrentUser }) {
   return (
     <div className="centered">
       <h3>SIGNUP</h3>
-      <form onSubmit={handleSubmit}>
+      <FormGroup onSubmit={handleSubmit}>
         <input
           className="custom-imputs"
           type="text"
@@ -117,11 +118,11 @@ function Signup({ setCurrentUser }) {
         ) : (
           <React.Fragment> </React.Fragment>
         )}
-        <button className="custom-button" type="submit">
+        <Button className="custom-button" type="submit">
           SIGNUP
-        </button>
+        </Button>
         <p>{/* <Link to="/login">Log in</Link> */}</p>
-      </form>
+      </FormGroup>
     </div>
   );
 }

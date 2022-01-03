@@ -28,7 +28,7 @@ function SearchResults(search) {
   return (
     <div>
       <h1>SEARCH RESULTS</h1>
-      <div className="grid__container">
+
         <div className="items__grid">
           {results ? (
             results.map((item) => <ItemCard cardInfo={item} key={item.id} />)
@@ -36,7 +36,7 @@ function SearchResults(search) {
             <></>
           )}
         </div>
-      </div>
+
     </div>
   );
 }

@@ -2,10 +2,11 @@ import React from "react";
 import Login from "./Login";
 import { useHistory } from "react-router-dom";
 
-function DropDown({ currentUser }) {
+function DropDown({ currentUser, setCurrentUser }) {
   const history = useHistory();
   const logOut = () => {
     fetch("/logout", { method: "DELETE" }).then(() => {
+      setCurrentUser([])
       history.push("/");
       console.log("logged out");
     });

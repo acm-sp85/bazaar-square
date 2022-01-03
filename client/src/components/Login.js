@@ -55,7 +55,7 @@ function App() {
   const signUp = () => {};
 
   return (
-    <div>
+    <div className="centered">
       <FormGroup onSubmit={handleSubmit} className="form__box">
         <input
           className="custom__imputs"

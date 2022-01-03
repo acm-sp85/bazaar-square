@@ -7,7 +7,7 @@ import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import DropDown from "./DropDown";
 
-function Header({ currentUser }) {
+function Header({ currentUser, setCurrentUser }) {
   const [dropDownOn, setDropDownOn] = useState(false);
   const [searchBar, setSearchBar] = useState("");
 
@@ -29,7 +29,7 @@ function Header({ currentUser }) {
 
   return (
     <>
-      <h3 className="page__title">Donate / Borrow / Sell / Trade</h3>
+      {/* <h3 className="page__title">Donate / Borrow / Sell / Trade</h3> */}
       <div className="header">
         <img
           className="header__icon"
@@ -57,7 +57,10 @@ function Header({ currentUser }) {
         </div>
         {dropDownOn ? (
           <div className="dropdown">
-            <DropDown currentUser={currentUser} />
+            <DropDown
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
           </div>
         ) : (
           <></>

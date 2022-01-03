@@ -1,40 +1,28 @@
 .home {
-  display: flex;
+  /* display: flex;
   margin-top: -30px;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  width: 100%; */
 }
 
 .left__component {
   height: 300px;
-
   padding: 15px;
-  width: 20vw;
-  text-align: center;
-  /* border: 1px solid lightgrey;
-  border-radius: 10px; */
-  /* background-color: rgb(245, 245, 236); */
+  width: auto;
+  height: 400px;
+  margin-top: 50px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  /* background-color: tomato; */
 }
-.map {
-  /* background-color: rgb(245, 245, 236); */
-  height: 500px;
-  width: 60vw;
-  text-align: center;
-}
+
 .right__component {
-  height: fit-content(20em);
+  height: 400px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  /* background-color: tomato; */
+  margin-top: 50px;
   padding: 15px;
-  width: 20vw;
-  /* text-align: center; */
-  /* background-color: rgb(245, 245, 236); */
-  /* border: 1px solid lightgrey;
-  border-radius: 10px; */
-}
-
-.carousel__card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
+  width: auto;
 }

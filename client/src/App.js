@@ -15,15 +15,18 @@ import CategoryPage from "./components/CategoryPage";
 import LocationPage from "./components/LocationPage";
 import UserProfilePublic from "./components/UserProfilePublic";
 import ItemInfo from "./components/ItemInfo";
+import Login from "./components/Login";
 import Footer from "./components/Footer";
 import AddReview from "./components/AddReview";
 import ItemTypeCategory from "./components/ItemTypeCategory";
 import ItemTypesCarousel from "./components/ItemTypesCarousel";
+import AreasCarousel from "./components/AreasCarousel";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [authChecked, setAuthChecked] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [cities, setCities] = useState([]);
 
   useEffect(() => {
     fetch("/me", {
@@ -47,6 +50,15 @@ function App() {
         });
       }
     });
+    fetch("/cities", {
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((cities) => {
+          setCities(cities);
+        });
+      }
+    });
   }, []);
 
   if (!authChecked) {
@@ -55,7 +67,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header currentUser={currentUser} />
+      <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
 
       <Switch>
         <Route
@@ -73,8 +85,13 @@ function App() {
               ) : (
                 <UnauthenticatedApp setCurrentUser={setCurrentUser} />
               )}
-              <CategoriesCarousel categories={categories} />
               <ItemTypesCarousel />
+              <br />
+              <h3>Categories:</h3>
+              <CategoriesCarousel categories={categories} />
+              <br />
+              <h3>Areas:</h3>
+              <AreasCarousel cities={cities} />
             </div>
           )}
         />
@@ -83,6 +100,17 @@ function App() {
           path="/signup"
           render={(props) => (
             <Signup
+              props={props}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/login"
+          render={(props) => (
+            <Login
               props={props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}

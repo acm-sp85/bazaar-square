@@ -8,12 +8,12 @@ function Home({ currentUser, setCurrentUser }) {
   return (
     <div>
       <div className="home">
-        <LeftComponent />
-        <MapComponent />
+        {/* <MapComponent /> */}
         <RightComponent
           setCurrentUser={setCurrentUser}
           currentUser={currentUser}
         />
+        <LeftComponent />
       </div>
     </div>
   );

@@ -5,4 +5,5 @@
 .form__box {
   max-width: 150px;
   align-items: center;
+  margin: auto;
 }
