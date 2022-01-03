@@ -118,7 +118,7 @@ function Signup({ setCurrentUser }) {
         ) : (
           <React.Fragment> </React.Fragment>
         )}
-        <Button className="custom-button" type="submit">
+        <Button className="custom-button" type="submit" onClick={handleSubmit}>
           SIGNUP
         </Button>
         <p>{/* <Link to="/login">Log in</Link> */}</p>

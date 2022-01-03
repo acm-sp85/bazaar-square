@@ -185,7 +185,7 @@ function App() {
         />
         <Route
           exact
-          path="/category"
+        path="/category"
           render={(props) => (
             <CategoryPage
               props={props}

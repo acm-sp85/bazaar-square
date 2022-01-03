@@ -1,12 +1,13 @@
 import React from "react";
 import Login from "./Login";
 import { useHistory } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 function DropDown({ currentUser, setCurrentUser }) {
   const history = useHistory();
   const logOut = () => {
     fetch("/logout", { method: "DELETE" }).then(() => {
-      setCurrentUser([])
+      setCurrentUser([]);
       history.push("/");
       console.log("logged out");
     });
@@ -16,7 +17,6 @@ function DropDown({ currentUser, setCurrentUser }) {
       {currentUser ? (
         <div>
           <p
-            className="link"
             onClick={() => {
               history.push("/manage-items");
             }}
@@ -42,10 +42,12 @@ function DropDown({ currentUser, setCurrentUser }) {
         </div>
       ) : (
         <div>
-          <p style={{ display: "flex", justifyContent: "center" }}>
-            Not Logged in
-          </p>
-          <Login />
+          <Button href="/login" style={{ display: "flex" }}>
+            Login
+          </Button>
+          <Button href="/signup" style={{ display: "flex" }}>
+            Signup
+          </Button>
         </div>
       )}
     </div>
