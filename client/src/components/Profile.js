@@ -35,9 +35,14 @@ function Profile(props) {
 
   return (
     <div>
-
-      <h3>Welcome back {userName}! This are your recently added items:</h3>
-      <DisplayItems items={lastItemsAdded} />
+      {lastItemsAdded.length > 0 ? (
+        <>
+          <h3>Welcome back {userName}! This are your recently added items:</h3>
+          <DisplayItems items={lastItemsAdded} />
+        </>
+      ) : (
+        <h3>Welcome back {userName}!</h3>
+      )}
     </div>
   );
 }

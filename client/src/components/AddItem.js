@@ -10,6 +10,8 @@ function AddItem({ currentUser, setUsersItems }) {
   const [item_type_id, setItem_type_id] = useState("");
   const [image, setImage] = useState("");
   const [item_name, setItem_name] = useState("");
+  const [price, setPrice] = useState("");
+  const [forSale, setForSale] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,6 +27,7 @@ function AddItem({ currentUser, setUsersItems }) {
         item_type_id,
         image,
         item_name,
+        price,
       }),
     };
 
@@ -40,6 +43,7 @@ function AddItem({ currentUser, setUsersItems }) {
   };
   const handleItemType = (e) => {
     setItem_type_id(e.target.value);
+    e.target.value = 1 ? setForSale(true) : setForSale(false);
   };
   return (
     <div>
@@ -98,6 +102,17 @@ function AddItem({ currentUser, setUsersItems }) {
         </select>
 
         <br />
+        {forSale ? (
+          <input
+            className="custom-imputs"
+            type="text"
+            placeholder="Price..."
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        ) : (
+          <></>
+        )}
         <Button type="submit">CREATE ITEM</Button>
       </form>
     </div>

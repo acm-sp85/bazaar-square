@@ -10,11 +10,37 @@
 
 .review__card {
   display: grid;
-  grid-template-columns: 30% 30% 30%;
+  /* grid-template-columns: 30% 30% 30%;
+   */
+  /* grid-template-columns: repeat(4, 1fr); */
+  overflow-y: scroll;
   margin-left: 25px;
   padding-top: 5px;
-  background-color: rgb(17, 74, 148);
   padding: 15px;
-  /* width: auto; */
-  /* height: fit-content; */
+}
+
+.review__title {
+  font-size: 17px;
+  color: rgb(172, 172, 172);
+}
+.review__by {
+  color: blue;
+  font-size: 12px;
+}
+.review__content {
+  font-size: 20px;
+  font-style: oblique;
+  justify-self: center;
+}
+/* 
+.reviews__box {
+  background-color: violet;
+  justify-items: center;
+  max-width: 50vw;
+} */
+
+.modal {
+  overflow-y: scroll;
+  align-self: center;
+  justify-self: center;
 }
