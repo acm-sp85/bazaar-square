@@ -45,9 +45,16 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
         {/* <strong> User:</strong> {cardInfo.owner}({cardInfo.owner_reviews.length}⭐) */}
       </p>
       <br />
+
       <p onClick={handleClickType} className="link">
         <strong>{cardInfo.type}</strong>
       </p>
+      <br />
+      {cardInfo.type == "Sell" && cardInfo.price ? (
+        <h2>${cardInfo.price}</h2>
+      ) : (
+        <></>
+      )}
 
       {toEdit ? (
         <div className="link">

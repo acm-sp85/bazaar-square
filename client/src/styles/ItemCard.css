@@ -12,7 +12,7 @@
   align-self: center;
   justify-self: center;
   width: 20vw;
-  height: 450px;
+  height: 500px;
   border-radius: 10px;
   margin: 20px;
   overflow: hidden;
@@ -48,5 +48,10 @@
 }
 .item__card > p {
   margin-top: 10px;
+  margin-left: 25px;
+}
+.item__card > h2 {
+  align-self: left;
+  margin-top: -15px;
   margin-left: 25px;
 }

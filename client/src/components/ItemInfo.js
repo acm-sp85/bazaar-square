@@ -41,7 +41,7 @@ function ItemInfo(info) {
       <Box
         className="centered__itemInfo"
         sx={{
-          maxWidth: 500,
+          maxWidth: 600,
           border: "1px solid lightgrey",
           borderRadius: 5,
           padding: 2,
@@ -73,6 +73,14 @@ function ItemInfo(info) {
               {itemInfo.description}
               <br />
             </Typography>
+            {itemInfo.type == "Sell" ? (
+              <Typography variant="body2">
+                ${itemInfo.price}
+                <br />
+              </Typography>
+            ) : (
+              <></>
+            )}
           </CardContent>
           <CardActions>
             {user ? (

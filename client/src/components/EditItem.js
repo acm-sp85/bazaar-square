@@ -11,6 +11,7 @@ function EditItem(itemToEdit) {
   const [item_type_id, setItem_type_id] = useState("");
   const [image, setImage] = useState("");
   const [item_name, setItem_name] = useState("");
+  const [price, setPrice] = useState("");
 
   useEffect(() => {
     const config = {
@@ -35,6 +36,7 @@ function EditItem(itemToEdit) {
         setItem_type_id(result.item_type_id);
         setImage(result.image);
         setItem_name(result.item_name);
+        setPrice(result.price);
       });
   }, [itemToEdit]);
 
@@ -51,6 +53,7 @@ function EditItem(itemToEdit) {
         item_type_id,
         image,
         item_name,
+        price,
       }),
     };
     fetch(`/items/${itemToEdit.props.history.location.state}`, config).then(
@@ -131,6 +134,17 @@ function EditItem(itemToEdit) {
           <option value="3">Borrow</option>
           <option value="4">Donate</option>
         </select>
+        {item_type_id == "1" ? (
+          <input
+            className="custom-imputs"
+            type="text"
+            placeholder="Price..."
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+        ) : (
+          <></>
+        )}
 
         <br />
         <Button type="submit">UPDATE ITEM</Button>
