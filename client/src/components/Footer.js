@@ -12,7 +12,7 @@ function Copyright() {
   return (
     <Typography variant="body2" color="text.secondary">
       {"Copyright © "}
-      <Link color="inherit" href="https://alexcontell.com/">
+      <Link color="inherit" href="https://google.com/">
         Random Bazaar
       </Link>{" "}
       {new Date().getFullYear()}
@@ -36,6 +36,12 @@ export default function Footer() {
     history.push({
       pathname: "/location",
       state: location_id,
+    });
+  };
+  const handleClickType = (type_id) => {
+    history.push({
+      pathname: "/item-type",
+      state: type_id,
     });
   };
   useEffect(() => {
@@ -72,7 +78,7 @@ export default function Footer() {
       >
         <Container maxWidth="lg">
           <Grid container justifyContent="center">
-            <Grid item md={4}>
+            <Grid item md={12}>
               <Typography variant="body1">
                 Random Bazaar is a market place to share goods with your
                 community. Donate, borrow or sell your goods with our platform.
@@ -179,6 +185,41 @@ export default function Footer() {
                 }}
               >
                 Staten Island
+              </Typography>
+            </Grid>
+            <Grid item md={4} style={{ textAlign: "justify" }}>
+              <Typography variant="body1">Item Types</Typography>
+              <Typography
+                variant="body2"
+                onClick={() => {
+                  handleClickType(1);
+                }}
+              >
+                Sell
+              </Typography>
+              <Typography
+                variant="body2"
+                onClick={() => {
+                  handleClickType(2);
+                }}
+              >
+                Trade
+              </Typography>
+              <Typography
+                variant="body2"
+                onClick={() => {
+                  handleClickType(3);
+                }}
+              >
+                Borrow
+              </Typography>
+              <Typography
+                variant="body2"
+                onClick={() => {
+                  handleClickType(4);
+                }}
+              >
+                Donate
               </Typography>
             </Grid>
             <Copyright item md={12} />
