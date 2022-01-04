@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FormGroup } from "@mui/material";
+import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";
 import "../App.css";
@@ -13,6 +14,7 @@ function Signup({ setCurrentUser }) {
   const [city, setCity] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -35,6 +37,7 @@ function Signup({ setCurrentUser }) {
       if (response.ok) {
         response.json().then((info) => {
           setCurrentUser(info);
+          history.push("/");
         });
       } else {
         response.json().then((error) => {
