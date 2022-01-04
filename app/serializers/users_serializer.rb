@@ -3,6 +3,8 @@ class UsersSerializer < ActiveModel::Serializer
 
   has_many :items, serializer: ItemsSerializer
   has_many :reviews
+  has_many :sent_messages
+  has_many :received_messages
 
 
   def location
