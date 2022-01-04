@@ -25,7 +25,7 @@ function Profile(props) {
           setCity(user.location);
           setEmail(user.email);
           setItems(user.items);
-          setLastItemsAdded(user.items.reverse().slice(0, 5));
+          setLastItemsAdded(user.items.reverse().slice(0, 6));
         });
       } else {
         console.log("Couldn't access User's info");

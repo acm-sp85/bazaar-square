@@ -34,7 +34,7 @@ class ItemsController < ApplicationController
   end
 
   def last_items_added
-    last_added = Item.all.reverse().slice(0, 5)
+    last_added = Item.all.reverse().slice(0, 6)
     if last_added
       render json: last_added, each_serializer: ItemsSerializer, status: :ok
     else
