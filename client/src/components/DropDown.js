@@ -37,6 +37,13 @@ function DropDown({ currentUser, setCurrentUser }) {
           >
             Your reviews
           </p>
+          <p
+            onClick={() => {
+              history.push("/wishlist");
+            }}
+          >
+            Your Wishlist
+          </p>
           <br />
           <p onClick={logOut}>Log out</p>
         </div>

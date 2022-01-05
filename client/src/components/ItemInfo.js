@@ -36,11 +36,26 @@ function ItemInfo(info) {
   }, []);
 
   const contactOwnerAction = () => {
-    console.log("now send a message " + itemInfo.owner_id);
+    // console.log("now send a message " + itemInfo.owner_id);
     history.push({
       pathname: "/messager",
       state: itemInfo.owner_id,
     });
+  };
+
+  const addToWishlist = () => {
+    console.log("add to wishlist");
+    const config = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        name: itemInfo.name,
+        item_id: itemInfo.id,
+        user_id: user.id,
+      }),
+    };
+
+    fetch("/wishlist", config);
   };
 
   return (
@@ -91,9 +106,14 @@ function ItemInfo(info) {
           </CardContent>
           <CardActions>
             {user ? (
-              <Button size="small" onClick={contactOwnerAction}>
-                Contact owner - {itemInfo.owner}
-              </Button>
+              <>
+                <Button size="small" onClick={contactOwnerAction}>
+                  Contact owner - {itemInfo.owner}
+                </Button>
+                <Button size="small" onClick={addToWishlist}>
+                  Add to Wishlist
+                </Button>
+              </>
             ) : (
               <Button
                 size="small"

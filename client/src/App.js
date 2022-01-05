@@ -22,6 +22,7 @@ import ItemTypeCategory from "./components/ItemTypeCategory";
 import ItemTypesCarousel from "./components/ItemTypesCarousel";
 import AreasCarousel from "./components/AreasCarousel";
 import MessageSend from "./components/MessageSend";
+import WishList from "./components/WishList";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -244,6 +245,17 @@ function App() {
           path="/messager"
           render={(props) => (
             <MessageSend
+              props={props}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/wishlist"
+          render={(props) => (
+            <WishList
               props={props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}
