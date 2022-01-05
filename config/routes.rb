@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   post "/signup", to: "users#create"
   post '/items', to: "items#create"
+  # post "/messages" to: "messages#create"
 
     delete "/logout", to: "sessions#logout"
 end

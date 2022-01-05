@@ -21,6 +21,7 @@ import AddReview from "./components/AddReview";
 import ItemTypeCategory from "./components/ItemTypeCategory";
 import ItemTypesCarousel from "./components/ItemTypesCarousel";
 import AreasCarousel from "./components/AreasCarousel";
+import MessageSend from "./components/MessageSend";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -185,7 +186,7 @@ function App() {
         />
         <Route
           exact
-        path="/category"
+          path="/category"
           render={(props) => (
             <CategoryPage
               props={props}
@@ -232,6 +233,17 @@ function App() {
           path="/item-type"
           render={(props) => (
             <ItemTypeCategory
+              props={props}
+              currentUser={currentUser}
+              setCurrentUser={setCurrentUser}
+            />
+          )}
+        />
+        <Route
+          exact
+          path="/messager"
+          render={(props) => (
+            <MessageSend
               props={props}
               currentUser={currentUser}
               setCurrentUser={setCurrentUser}

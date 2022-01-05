@@ -28,13 +28,20 @@ function ItemInfo(info) {
       credentials: "include",
     }).then((res) => {
       if (res.ok) {
-        console.log(info);
         res.json().then((item_info) => {
           setItemInfo(item_info);
         });
       }
     });
   }, []);
+
+  const contactOwnerAction = () => {
+    console.log("now send a message " + itemInfo.owner_id);
+    history.push({
+      pathname: "/messager",
+      state: itemInfo.owner_id,
+    });
+  };
 
   return (
     <div>
@@ -84,7 +91,9 @@ function ItemInfo(info) {
           </CardContent>
           <CardActions>
             {user ? (
-              <Button size="small">Contact owner - {itemInfo.owner}</Button>
+              <Button size="small" onClick={contactOwnerAction}>
+                Contact owner - {itemInfo.owner}
+              </Button>
             ) : (
               <Button
                 size="small"
