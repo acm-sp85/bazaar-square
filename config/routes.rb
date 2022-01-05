@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :wishlists
   resources :messages
   resources :reviews
   resources :item_types

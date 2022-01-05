@@ -4,12 +4,13 @@
   padding: 15px;
   max-width: 200px;
   margin-left: 10px;
+  margin-top: 10px;
 }
 
 .message > p {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 .sender {
-    font-size: 13px;
+  font-size: 13px;
 }
