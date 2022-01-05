@@ -1,0 +1,15 @@
+.message {
+  background-color: blueviolet;
+  border-radius: 15px;
+  padding: 15px;
+  max-width: 200px;
+  margin-left: 10px;
+}
+
+.message > p {
+    margin-left: 10px;
+}
+
+.sender {
+    font-size: 13px;
+}
