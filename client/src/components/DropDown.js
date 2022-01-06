@@ -3,18 +3,18 @@ import Login from "./Login";
 import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 
-function DropDown({ currentUser, setCurrentUser }) {
+function DropDown(props) {
   const history = useHistory();
   const logOut = () => {
     fetch("/logout", { method: "DELETE" }).then(() => {
-      setCurrentUser([]);
+      props.setCurrentUser([]);
       history.push("/");
       console.log("logged out");
     });
   };
   return (
     <div>
-      {currentUser ? (
+      {props.currentUser ? (
         <div>
           <p
             onClick={() => {

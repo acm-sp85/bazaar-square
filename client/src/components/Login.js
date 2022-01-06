@@ -10,7 +10,6 @@ function Login(props) {
   const [error, setError] = useState("");
   const history = useHistory();
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(email, password);
@@ -37,8 +36,6 @@ function Login(props) {
       }
     });
   };
-
-  const signUp = () => {};
 
   return (
     <div className="centered">
