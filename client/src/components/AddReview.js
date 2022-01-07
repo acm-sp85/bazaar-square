@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import "../styles/AddReview.css";
+import { useHistory } from "react-router-dom";
 
 function AddReview({ currentUser, props }) {
   const [review_title, setReview_title] = useState("");
@@ -9,6 +10,7 @@ function AddReview({ currentUser, props }) {
   const [review_content, setReview_content] = useState("");
   const [user_id, setUser_id] = useState(props.history.location.state);
   const [author_id, setAuthor_id] = useState(currentUser.id);
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +29,10 @@ function AddReview({ currentUser, props }) {
     fetch(`/reviews/`, config).then((response) => {
       if (response.ok) {
         console.log(response);
+        history.push({
+          pathname: "/user-profile",
+          state: user_id,
+        });
       } else {
         response.json().then((error) => {
           console.log(error.error);

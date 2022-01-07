@@ -42,7 +42,6 @@ function EditItem(itemToEdit) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Create item");
     const config = {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },

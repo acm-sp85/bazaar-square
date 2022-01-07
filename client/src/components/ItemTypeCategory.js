@@ -26,7 +26,13 @@ function ItemTypeCategory(type) {
   }, []);
   return (
     <div>
-      {results ? <h1>Showing all items for {results.name}:</h1> : <></>}
+      {results ? (
+        <h1 style={{ textAlign: "center" }}>
+          Showing all items for {results.name}
+        </h1>
+      ) : (
+        <></>
+      )}
       <div className="items__grid">
         {results ? (
           results.items.map((item) => (

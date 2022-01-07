@@ -12,7 +12,7 @@ class UsersSerializer < ActiveModel::Serializer
   end
 
   def rating_average
-    object.reviews.sum(:review_rating) / object.reviews.size
+    (object.reviews.sum(:review_rating) / object.reviews.size).round(2)
 
   end
 
