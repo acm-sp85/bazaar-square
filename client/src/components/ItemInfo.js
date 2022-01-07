@@ -36,7 +36,6 @@ function ItemInfo(info) {
   }, []);
 
   const contactOwnerAction = () => {
-    // console.log("now send a message " + itemInfo.owner_id);
     history.push({
       pathname: "/messager",
       state: itemInfo.owner_id,
@@ -55,7 +54,29 @@ function ItemInfo(info) {
       }),
     };
 
-    fetch("/wishlist", config);
+    fetch("/wishlist", config).then((response) => {
+      if (response.ok) {
+        response.json().then((item_wished) => {
+          // setLastItemsAdded(item_wished);
+          console.log(item_wished.item_info);
+          const wish = item_wished.item_info;
+          console.log(info.currentUser.wishlists);
+          //need to update setCurrentUser.wishlists adding the new wished item!!
+          info.setCurrentUser({
+            ...info.currentUser,
+            wishlists: [...info.currentUser.wishlists],
+            wish,
+          });
+        });
+        history.push({
+          pathname: "/wishlist",
+          state: "updated",
+        });
+      } else {
+        // DO BETTER ERROR HANDLING
+        console.log("ERROORRRR");
+      }
+    });
   };
 
   return (
