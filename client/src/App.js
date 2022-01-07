@@ -68,6 +68,28 @@ function App() {
   }
 
   return (
+    // <>
+    //   <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
+    //   <div className="in__margin">
+    //     {currentUser ? (
+    //       <div>
+    //         <HomeAuthenticated
+    //           setCurrentUser={setCurrentUser}
+    //           currentUser={currentUser}
+    //         />
+    //       </div>
+    //     ) : (
+    //       <UnauthenticatedApp setCurrentUser={setCurrentUser} />
+    //     )}
+    //     <ItemTypesCarousel />
+    //     <br />
+    //     <h3>Categories:</h3>
+    //     <CategoriesCarousel categories={categories} />
+    //     <br />
+    //     <h3>Areas:</h3>
+    //     <AreasCarousel cities={cities} />
+    //   </div>
+    // </>
     <BrowserRouter>
       <Header currentUser={currentUser} setCurrentUser={setCurrentUser} />
 
@@ -80,6 +102,7 @@ function App() {
               {currentUser ? (
                 <div>
                   <HomeAuthenticated
+                    props={props}
                     setCurrentUser={setCurrentUser}
                     currentUser={currentUser}
                   />

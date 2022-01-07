@@ -7,8 +7,8 @@ function DropDown(props) {
   const history = useHistory();
   const logOut = () => {
     fetch("/logout", { method: "DELETE" }).then(() => {
-      props.setCurrentUser([]);
       history.push("/");
+      props.setCurrentUser([]);
       console.log("logged out");
     });
   };

@@ -1,15 +1,20 @@
 import React from "react";
 import "./styles/Home.css";
-import MapComponent from "./components/MapComponent";
-// import Map from "./components/Map.js";
-// import credentials from "./credentials";
+import { useHistory } from "react-router-dom";
 
 function UnauthenticatedApp({ setCurrentUser }) {
-  // const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.exp&key=${credentials.mapsKey}`;
-
+  const history = useHistory();
   return (
     <div className="home">
-      <h1>HELLO</h1>
+      <h3
+        style={{ textAlign: "center" }}
+        onClick={() => {
+          history.push("/login");
+        }}
+        className="link"
+      >
+        Sign in to fully enjoy our platform!
+      </h3>
     </div>
   );
 }

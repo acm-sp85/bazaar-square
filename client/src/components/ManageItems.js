@@ -5,8 +5,8 @@ import ItemCard from "./ItemCard";
 import AddItem from "./AddItem";
 import RightComponent from "./RightComponent";
 
-function ManageItems({ currentUser, setCurrentUser }) {
-  const [usersItems, setUsersItems] = useState(currentUser.items);
+function ManageItems(props) {
+  const [usersItems, setUsersItems] = useState(props.currentUser.items);
   const [addItemActive, setAddItemActive] = useState(false);
   const [itemToEdit, setItemToEdit] = useState(false);
 
@@ -40,18 +40,18 @@ function ManageItems({ currentUser, setCurrentUser }) {
   return (
     <div>
       <h1>MANAGE ITEMS</h1>
-      {/* <RightComponent
-        setCurrentUser={setCurrentUser}
-        currentUser={currentUser}
-      /> */}
       <Button onClick={handleAddItemButton}>ADD ITEM</Button>
       {addItemActive ? (
-        <AddItem currentUser={currentUser} setUsersItems={setUsersItems} />
+        <AddItem
+          currentUser={props.currentUser}
+          setUsersItems={setUsersItems}
+        />
       ) : (
         <></>
       )}
       <div className="items__grid">
-        {usersItems.length > 0 ? (
+        {/* {usersItems.length > 0 ? ( */}
+        {props.currentUser ? (
           usersItems.map((item) => (
             <ItemCard
               cardInfo={item}
