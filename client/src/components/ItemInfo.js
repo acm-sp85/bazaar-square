@@ -57,15 +57,11 @@ function ItemInfo(info) {
     fetch("/wishlist", config).then((response) => {
       if (response.ok) {
         response.json().then((item_wished) => {
-          // setLastItemsAdded(item_wished);
-          console.log(item_wished.item_info);
-          const wish = item_wished.item_info;
+     
           console.log(info.currentUser.wishlists);
-          //need to update setCurrentUser.wishlists adding the new wished item!!
           info.setCurrentUser({
             ...info.currentUser,
-            wishlists: [...info.currentUser.wishlists],
-            wish,
+            wishlists: [...info.currentUser.wishlists, item_wished],
           });
         });
         history.push({
