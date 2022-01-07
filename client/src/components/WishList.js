@@ -6,15 +6,11 @@ export default function WishList(props) {
   return (
     <div>
       <h1>WISHLIST</h1>
-      {/* <div className="items__grid"> */}
-      <div>
+      <div className="items__grid">
         {wished_items.map((items) => (
-          <img
-            className="item__card"
-            src={items.item_info.image}
-            key={items.item_info.id}
-          />
-          // <p key={items.id}>{items.id}</p>
+          <div key={items.item_info.id}>
+            <img className="item__card" src={items.item_info.image} />
+          </div>
         ))}
       </div>
     </div>
