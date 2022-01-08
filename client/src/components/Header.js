@@ -59,6 +59,7 @@ function Header(props) {
             <DropDown
               currentUser={props.currentUser}
               setCurrentUser={props.setCurrentUser}
+              logOut={props.logOut}
             />
           </div>
         ) : (

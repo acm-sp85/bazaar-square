@@ -1,20 +1,23 @@
 import React from "react";
 import "./styles/Home.css";
 import { useHistory } from "react-router-dom";
+import { Switch, Route, Redirect, Link } from "react-router-dom";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function UnauthenticatedApp({ setCurrentUser }) {
   const history = useHistory();
   return (
-    <div className="home">
-      <h3
-        style={{ textAlign: "center" }}
-        onClick={() => {
-          history.push("/login");
-        }}
-        className="link"
-      >
-        Sign in to fully enjoy our platform!
-      </h3>
+    <div>
+      <Switch>
+        <Route exact path="/">
+          <Login setCurrentUser={setCurrentUser} />
+        </Route>
+        <Route exact path="/signup">
+          <Signup setCurrentUser={setCurrentUser} />
+        </Route>
+        <Redirect to="/" />
+      </Switch>
     </div>
   );
 }

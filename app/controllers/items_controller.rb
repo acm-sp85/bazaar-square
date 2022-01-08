@@ -61,6 +61,7 @@ class ItemsController < ApplicationController
       else
         render json: {error: "Impossible to update item"}, status: :unprocessable_entity 
       end
+
       
   end  
 

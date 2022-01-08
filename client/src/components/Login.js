@@ -4,7 +4,7 @@ import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
 import "../styles/Login.css";
 
-function Login(props) {
+function Login({ setCurrentUser }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -25,7 +25,7 @@ function Login(props) {
     fetch("/login", requestOptions).then((response) => {
       if (response.ok) {
         response.json().then((user) => {
-          props.setCurrentUser(user);
+          setCurrentUser(user);
           history.push("/");
         });
       } else {

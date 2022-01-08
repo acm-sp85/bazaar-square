@@ -5,12 +5,7 @@ import Button from "@mui/material/Button";
 
 function DropDown(props) {
   const history = useHistory();
-  const logOut = () => {
-    fetch("/logout", { method: "DELETE" }).then(() => {
-      history.push("/login");
-      props.setCurrentUser([]);
-    });
-  };
+
   return (
     <div>
       {props.currentUser ? (
@@ -44,7 +39,7 @@ function DropDown(props) {
             Your Wishlist
           </p>
           <br />
-          <p onClick={logOut}>Log out</p>
+          <p onClick={props.logOut}>Log out</p>
         </div>
       ) : (
         <div>
