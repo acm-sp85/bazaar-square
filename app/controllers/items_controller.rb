@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
    before_action :check_authorization, except: [:create, :index, :destroy, :update, :find_by_name, :show_category_items, :show_city_items, :last_items_added, :total, :show]
-  before_action :set_item, only: [:show, :destroy, :update]
+    before_action :set_item, only: [:show, :destroy, :update]
 
     def index
 
@@ -61,7 +61,6 @@ class ItemsController < ApplicationController
       else
         render json: {error: "Impossible to update item"}, status: :unprocessable_entity 
       end
-
       
   end  
 
@@ -95,7 +94,7 @@ class ItemsController < ApplicationController
   private
 
   def items_params
-        params.permit(:id, :user_id, :city_id, :description, :item_type_id, :category_id, :item_name, :image, :price)
+  params.permit(:id, :user_id, :city_id, :description, :item_type_id, :category_id, :item_name, :image, :price)
   end
 
   def set_item

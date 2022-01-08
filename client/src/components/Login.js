@@ -3,6 +3,7 @@ import { FormGroup } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useHistory } from "react-router-dom";
 import "../styles/Login.css";
+import { red } from "@mui/material/colors";
 
 function Login({ setCurrentUser }) {
   const [email, setEmail] = useState("");
@@ -62,6 +63,11 @@ function Login({ setCurrentUser }) {
       >
         SIGN UP
       </Button>
+      {error ? (
+        <p style={{ textAlign: "center", color: "red" }}>{error}</p>
+      ) : (
+        <></>
+      )}
     </div>
   );
 }

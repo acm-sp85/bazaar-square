@@ -4,6 +4,7 @@ import ItemCard from "./ItemCard";
 function LocationPage(city) {
   const [results, setResults] = useState(null);
   useEffect(() => {
+    window.scrollTo(0, 0);
     const config = {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -21,7 +22,7 @@ function LocationPage(city) {
       .then((result) => {
         setResults(result);
       });
-  }, []);
+  }, [city]);
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>

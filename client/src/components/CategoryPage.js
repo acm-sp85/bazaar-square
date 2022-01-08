@@ -5,6 +5,7 @@ function CategoryPage(categoryIndex) {
   const [results, setResults] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const config = {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -25,7 +26,7 @@ function CategoryPage(categoryIndex) {
       .then((result) => {
         setResults(result);
       });
-  }, []);
+  }, [categoryIndex]);
 
   return (
     <div>

@@ -5,6 +5,7 @@ function ItemTypeCategory(type) {
   const [results, setResults] = useState(null);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const config = {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -23,7 +24,8 @@ function ItemTypeCategory(type) {
       .then((result) => {
         setResults(result);
       });
-  }, []);
+  }, [type]);
+
   return (
     <div>
       {results ? (
