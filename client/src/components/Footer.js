@@ -67,7 +67,7 @@ export default function Footer() {
       <Box
         component="footer"
         sx={{
-          py: 10,
+          py: 2,
           px: 2,
           mt: "auto",
           backgroundColor: (theme) =>
@@ -79,12 +79,8 @@ export default function Footer() {
         <Container maxWidth="lg">
           <Grid container justifyContent="center">
             <Grid item md={12}>
-              <Typography variant="body1">
-                Random Bazaar is a market place to share goods with your
-                community. Donate, borrow or sell your goods with our platform.
-              </Typography>
               {setTotalNumberItems ? (
-                <p>
+                <p style={{ textAlign: "center", marginBottom: "10px" }}>
                   Currently working with {totalNumberItems} items in our
                   platform
                 </p>
@@ -100,6 +96,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClick(1);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Vehicles
               </Typography>
@@ -108,6 +105,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClick(2);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Art
               </Typography>
@@ -116,6 +114,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClick(3);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Games
               </Typography>
@@ -124,6 +123,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClick(4);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Books
               </Typography>
@@ -132,6 +132,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClick(5);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Electronics
               </Typography>
@@ -140,6 +141,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClick(6);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Furniture
               </Typography>
@@ -151,6 +153,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClickArea(1);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Manhattan
               </Typography>
@@ -159,6 +162,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClickArea(2);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Brooklyn
               </Typography>
@@ -167,6 +171,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClickArea(3);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Queens
               </Typography>
@@ -175,6 +180,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClickArea(4);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Bronx
               </Typography>
@@ -183,6 +189,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClickArea(5);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Staten Island
               </Typography>
@@ -194,6 +201,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClickType(1);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Sell
               </Typography>
@@ -202,6 +210,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClickType(2);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Trade
               </Typography>
@@ -210,6 +219,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClickType(3);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Borrow
               </Typography>
@@ -218,6 +228,7 @@ export default function Footer() {
                 onClick={() => {
                   handleClickType(4);
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Donate
               </Typography>

@@ -23,7 +23,7 @@ function LeftComponent() {
 
   return (
     <div className="left__component">
-      <h3>Last items added to app:</h3>
+      <h3>These are the latest items added to Random Bazaar:</h3>
       <DisplayItems items={lastItemsAdded} />
     </div>
   );

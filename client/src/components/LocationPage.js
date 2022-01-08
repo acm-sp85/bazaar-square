@@ -9,7 +9,6 @@ function LocationPage(city) {
       method: "GET",
       headers: { "Content-Type": "application/json" },
     };
-    console.log(city.props.history.location.state);
     fetch(`/items/location/${city.props.history.location.state}`, config)
       .then((response) => {
         if (response.ok) {

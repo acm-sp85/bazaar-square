@@ -68,6 +68,20 @@ function UserProfilePublic(owner_id) {
             <h3>Location: {profile.location}</h3>
             <h3 onClick={handleOpen}>Reviews({profile.rating_average}/5⭐)</h3>
             <p>Out of {profile.reviews.length} ratings</p>
+            {profile.id != owner_id.currentUser.id ? (
+              <p
+                onClick={() => {
+                  history.push({
+                    pathname: "/messager",
+                    state: profile.id,
+                  });
+                }}
+              >
+                Contact
+              </p>
+            ) : (
+              <></>
+            )}
           </div>
           <div className="items__grid">
             {profile.items.map((item) => (

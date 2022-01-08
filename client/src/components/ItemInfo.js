@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useHistory } from "react-router-dom";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -14,6 +14,8 @@ function ItemInfo(info) {
   const [itemInfo, setItemInfo] = useState(info);
   const [user, setUser] = useState(info.currentUser);
   const history = useHistory();
+  const ref = useRef(null);
+
   const bull = (
     <Box
       component="span"
@@ -23,6 +25,18 @@ function ItemInfo(info) {
     </Box>
   );
 
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+    document
+      .getElementById("click-area")
+      .addEventListener("mousedown", (event) => {
+        console.log("it is clicking");
+        // history.push("/");
+      });
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
   useEffect(() => {
     fetch(`/items/${info.props.history.location.state}`, {
       credentials: "include",
@@ -34,7 +48,11 @@ function ItemInfo(info) {
       }
     });
   }, []);
-
+  const handleKeyDown = (e) => {
+    if (e.key === "Escape") {
+      history.push("/");
+    }
+  };
   const contactOwnerAction = () => {
     history.push({
       pathname: "/messager",
@@ -57,7 +75,6 @@ function ItemInfo(info) {
     fetch("/wishlist", config).then((response) => {
       if (response.ok) {
         response.json().then((item_wished) => {
-     
           console.log(info.currentUser.wishlists);
           info.setCurrentUser({
             ...info.currentUser,
@@ -78,6 +95,7 @@ function ItemInfo(info) {
   return (
     <div>
       <Box
+        id="click-area"
         className="centered__itemInfo"
         sx={{
           maxWidth: 600,
@@ -124,12 +142,30 @@ function ItemInfo(info) {
           <CardActions>
             {user ? (
               <>
-                <Button size="small" onClick={contactOwnerAction}>
-                  Contact owner - {itemInfo.owner}
-                </Button>
-                <Button size="small" onClick={addToWishlist}>
-                  Add to Wishlist
-                </Button>
+                {itemInfo.owner_id != info.currentUser.id ? (
+                  <>
+                    {" "}
+                    <Button size="small" onClick={contactOwnerAction}>
+                      Contact owner - {itemInfo.owner}
+                    </Button>
+                    <Button size="small" onClick={addToWishlist}>
+                      Add to Wishlist
+                    </Button>
+                  </>
+                ) : (
+                  <>
+                    <Button
+                      size="small"
+                      onClick={() => {
+                        history.push({
+                          pathname: "/manage-items",
+                        });
+                      }}
+                    >
+                      You own this item!
+                    </Button>
+                  </>
+                )}
               </>
             ) : (
               <Button

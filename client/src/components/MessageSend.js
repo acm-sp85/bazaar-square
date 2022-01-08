@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 import Alert from "@mui/material/Alert";
 import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
 
 export default function MessageSend(props) {
   const [message_content, setMessage_content] = useState("");
@@ -42,13 +43,18 @@ export default function MessageSend(props) {
   return (
     <div className="centered">
       <form onSubmit={handleSubmit}>
-        <input
+        <TextField
+          id="standard-multiline-static"
           className="custom-imputs"
-          type="text-area"
+          type="text"
+          multiline
+          rows={8}
+          sx={{ m: 1, width: "57.5ch" }}
           placeholder="Type message..."
           value={message_content}
           onChange={(e) => setMessage_content(e.target.value)}
         />
+        <br />
         <Button type="submit">SEND</Button>
         {alert ? (
           <Stack

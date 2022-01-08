@@ -10,18 +10,16 @@
   height: 300px;
   padding: 15px;
   width: auto;
-  height: 400px;
+  height: 250px;
   margin-top: 50px;
   overflow-x: scroll;
   overflow-y: hidden;
-  /* background-color: tomato; */
 }
 
 .right__component {
-  height: 400px;
+  height: 250px;
   overflow-x: scroll;
   overflow-y: hidden;
-  /* background-color: tomato; */
   margin-top: 50px;
   padding: 15px;
   width: auto;
