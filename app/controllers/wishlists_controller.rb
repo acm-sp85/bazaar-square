@@ -1,4 +1,6 @@
 class WishlistsController < ApplicationController
+  before_action :check_authorization, except: [:destroy]
+  before_action :set_wishlit, only: [:destroy]
      def index
 
     lists = Wishlist.all
@@ -16,10 +18,24 @@ end
     end
   end
 
+    def destroy
+      
+    if @wishlist.destroy
+
+      head :no_content, status: :ok
+
+    else
+      ender json: {error: "Impossible to delete wishlist item"}, status: :unprocessable_entity 
+    end
+  end
+
 
   private
 
   def wishlist_params
         params.permit(:id, :user_id, :name, :item_id)
+  end
+  def set_wishlit
+        @wishlist = Wishlist.find_by(id: params[:id])
   end
 end

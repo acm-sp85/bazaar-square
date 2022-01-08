@@ -25,9 +25,14 @@ function LocationPage(city) {
   }, [city]);
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>
-        Showing you all items in the area{" "}
-      </h1>
+      {results ? (
+        <h1 style={{ textAlign: "center" }}>
+          Showing all items in {results[0].location}
+        </h1>
+      ) : (
+        <></>
+      )}
+
       <div className="items__grid">
         {results ? (
           results.map((item) => <ItemCard cardInfo={item} key={item.id} />)

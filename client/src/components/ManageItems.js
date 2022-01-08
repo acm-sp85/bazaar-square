@@ -50,7 +50,6 @@ function ManageItems(props) {
         <></>
       )}
       <div className="items__grid">
-        {/* {usersItems.length > 0 ? ( */}
         {props.currentUser ? (
           usersItems.map((item) => (
             <ItemCard
