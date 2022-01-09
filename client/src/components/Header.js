@@ -24,7 +24,6 @@ function Header(props) {
       pathname: "/search",
       state: searchBar,
     });
-    console.log(searchBar);
   };
 
   return (

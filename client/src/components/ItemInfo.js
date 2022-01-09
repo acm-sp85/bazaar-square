@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import * as React from "react";
 import Box from "@mui/material/Box";
@@ -14,7 +14,9 @@ function ItemInfo(info) {
   const [itemInfo, setItemInfo] = useState(info);
   const [user, setUser] = useState(info.currentUser);
   const history = useHistory();
-  const ref = useRef(null);
+  const users_wishes_ids = info.currentUser.wishlists.map(
+    (wish) => wish.item_info.id
+  );
 
   const bull = (
     <Box
@@ -148,9 +150,15 @@ function ItemInfo(info) {
                     <Button size="small" onClick={contactOwnerAction}>
                       Contact owner - {itemInfo.owner}
                     </Button>
-                    <Button size="small" onClick={addToWishlist}>
-                      Add to Wishlist
-                    </Button>
+                    {users_wishes_ids.filter(
+                      (wish_id) => wish_id == itemInfo.id
+                    ).length > 0 ? (
+                      <Button disabled>Added to Wishlist</Button>
+                    ) : (
+                      <Button size="small" onClick={addToWishlist}>
+                        Add to Wishlist
+                      </Button>
+                    )}
                   </>
                 ) : (
                   <>
