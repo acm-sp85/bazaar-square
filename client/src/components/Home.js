@@ -16,7 +16,7 @@ function Home({ currentUser, setCurrentUser, categories, cities }) {
         Random Bazaar is a market place to share goods with your community.
       </h3>
       <h4 variant="body1" style={{ textAlign: "center", color: "grey" }}>
-        Donate, borrow , trade or sell your goods in our platform.
+        Donate, borrow, trade or sell your goods in our platform.
       </h4>
 
       <ItemTypesCarousel />

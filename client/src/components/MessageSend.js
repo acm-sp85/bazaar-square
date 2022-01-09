@@ -63,7 +63,7 @@ export default function MessageSend(props) {
             sx={{ width: "100%" }}
             spacing={2}
             onClick={() => {
-              history.push("/");
+              history.goBack();
             }}
           >
             <Alert

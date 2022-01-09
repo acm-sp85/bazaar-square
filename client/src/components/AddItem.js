@@ -35,7 +35,7 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
     fetch("/items", requestOptionsCard)
       .then((response) => response.json())
       .then((data) => setUsersItems([...currentUser.items, data]));
-
+    console.log("eooo");
     setAddItemActive(false);
   };
   const handleCategory = (e) => {
@@ -117,7 +117,9 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
         ) : (
           <></>
         )}
-        <Button type="submit">CREATE ITEM</Button>
+        <Button onClick={handleSubmit} type="submit">
+          CREATE ITEM
+        </Button>
       </FormGroup>
     </div>
   );
