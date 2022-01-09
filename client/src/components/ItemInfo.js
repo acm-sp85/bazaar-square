@@ -2,13 +2,11 @@ import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import * as React from "react";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import CardMedia from "@mui/material/CardMedia";
-import { borderRadius } from "@mui/system";
 
 function ItemInfo(info) {
   const [itemInfo, setItemInfo] = useState(info);
@@ -30,11 +28,12 @@ function ItemInfo(info) {
   useEffect(() => {
     window.scrollTo(0, 0);
     window.addEventListener("keydown", handleKeyDown);
-    document
-      .getElementById("click-area")
-      .addEventListener("mousedown", (event) => {
-        console.log("it is clicking");
-      });
+    // SOME CODE TO DEVELOP: THE IDEA IS TO GO BACK WHEN CLICKING OUTSIDE OF BOX
+    // document
+    //   .getElementById("click-area")
+    //   .addEventListener("mousedown", (event) => {
+    //     console.log("it is clicking");
+    //   });
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -52,9 +51,11 @@ function ItemInfo(info) {
   }, []);
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
-      // history.push("/");
       history.goBack();
     }
+  };
+  const closeInfo = () => {
+    history.goBack();
   };
   const contactOwnerAction = () => {
     history.push({
@@ -105,6 +106,10 @@ function ItemInfo(info) {
         }}
       >
         <React.Fragment>
+          <h3 style={{ textAlign: "right" }} onClick={closeInfo}>
+            ✖️
+          </h3>
+
           <CardContent>
             <CardMedia
               component="img"

@@ -1,7 +1,9 @@
 import React from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
+import useHandleClickInfo from "./useHandleClickInfo";
 
 function Wish(props) {
+  const handleInfo = useHandleClickInfo(props.info.item_info.id);
   const handleDelete = (e) => {
     console.log(props.info.id);
     console.log(props.setWished_items);
@@ -21,7 +23,11 @@ function Wish(props) {
   };
   return (
     <div key={props.info.item_info.id}>
-      <img className="wishlist__card" src={props.info.item_info.image} />
+      <img
+        className="wishlist__card link"
+        src={props.info.item_info.image}
+        onClick={handleInfo}
+      />
       <div>
         <p>{props.info.item_info.item_name}</p>
         <DeleteIcon
