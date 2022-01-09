@@ -41,11 +41,15 @@ function ManageItems(props) {
   return (
     <div>
       <h1 style={{ textAlign: "center" }}>MANAGE ITEMS</h1>
+      <div style={{ textAlign: "center" }}>
+
       <Button onClick={handleAddItemButton}>ADD ITEM</Button>
+      </div>
       {addItemActive ? (
         <AddItem
           currentUser={props.currentUser}
           setUsersItems={setUsersItems}
+          setAddItemActive={setAddItemActive}
         />
       ) : (
         <></>

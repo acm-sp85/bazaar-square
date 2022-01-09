@@ -66,8 +66,10 @@ function UserProfilePublic(owner_id) {
             <h1>{profile.user_name}</h1>
             <h3>Email: {profile.email}</h3>
             <h3>Location: {profile.location}</h3>
-            <h3 onClick={handleOpen}>Reviews({profile.rating_average}/5⭐)</h3>
-            <p>Out of {profile.reviews.length} ratings</p>
+            <h3 onClick={handleOpen} className="soft__link">
+              Reviews({profile.rating_average}/5⭐)
+            </h3>
+            {/* <p>Out of {profile.reviews.length} ratings</p> */}
             {profile.id != owner_id.currentUser.id ? (
               <p
                 onClick={() => {
@@ -76,6 +78,7 @@ function UserProfilePublic(owner_id) {
                     state: profile.id,
                   });
                 }}
+                style={{ cursor: "pointer" }}
               >
                 Contact
               </p>

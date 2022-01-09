@@ -106,9 +106,9 @@ function ItemInfo(info) {
         }}
       >
         <React.Fragment>
-          <h3 style={{ textAlign: "right" }} onClick={closeInfo}>
+          <Button color="error" style={{ float: "right" }} onClick={closeInfo}>
             ✖️
-          </h3>
+          </Button>
 
           <CardContent>
             <CardMedia

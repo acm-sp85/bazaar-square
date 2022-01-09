@@ -55,7 +55,9 @@ export default function MessageSend(props) {
           onChange={(e) => setMessage_content(e.target.value)}
         />
         <br />
-        <Button type="submit">SEND</Button>
+        <div style={{ textAlign: "right" }}>
+          <Button type="submit">SEND</Button>
+        </div>
         {alert ? (
           <Stack
             sx={{ width: "100%" }}

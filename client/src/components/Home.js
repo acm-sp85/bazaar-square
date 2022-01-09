@@ -9,10 +9,13 @@ import AreasCarousel from "./AreasCarousel";
 function Home({ currentUser, setCurrentUser, categories, cities }) {
   return (
     <div className="home">
-      <h3 variant="body1" style={{ textAlign: "center" }}>
+      <h1 style={{ textAlign: "center" }}>
+        Welcome back {currentUser.user_name}!
+      </h1>
+      <h3 variant="body1" style={{ textAlign: "center", color: "grey" }}>
         Random Bazaar is a market place to share goods with your community.
       </h3>
-      <h4 variant="body1" style={{ textAlign: "center" }}>
+      <h4 variant="body1" style={{ textAlign: "center", color: "grey" }}>
         Donate, borrow , trade or sell your goods in our platform.
       </h4>
 
@@ -23,11 +26,11 @@ function Home({ currentUser, setCurrentUser, categories, cities }) {
       <br />
       <h3>Areas:</h3>
       <AreasCarousel cities={cities} />
+      <LeftComponent />
       <RightComponent
         setCurrentUser={setCurrentUser}
         currentUser={currentUser}
       />
-      <LeftComponent />
     </div>
   );
 }

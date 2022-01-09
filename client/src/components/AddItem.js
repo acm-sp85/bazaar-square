@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Button from "@mui/material/Button";
+import { FormGroup } from "@mui/material";
 
-function AddItem({ currentUser, setUsersItems }) {
+function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
   const [user, setUser] = useState("");
   const [description, setDescription] = useState("");
   const [category_id, setCategory_id] = useState("");
@@ -34,6 +35,8 @@ function AddItem({ currentUser, setUsersItems }) {
     fetch("/items", requestOptionsCard)
       .then((response) => response.json())
       .then((data) => setUsersItems([...currentUser.items, data]));
+
+    setAddItemActive(false);
   };
   const handleCategory = (e) => {
     setCategory_id(e.target.value);
@@ -43,11 +46,12 @@ function AddItem({ currentUser, setUsersItems }) {
   };
   const handleItemType = (e) => {
     setItem_type_id(e.target.value);
-    e.target.value = 1 ? setForSale(true) : setForSale(false);
+    console.log(e.target.value);
+    e.target.value == 1 ? setForSale(true) : setForSale(false);
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div style={{ textAlign: "center" }} className="centered">
+      <FormGroup onSubmit={handleSubmit}>
         <input
           className="custom-imputs"
           type="text"
@@ -114,7 +118,7 @@ function AddItem({ currentUser, setUsersItems }) {
           <></>
         )}
         <Button type="submit">CREATE ITEM</Button>
-      </form>
+      </FormGroup>
     </div>
   );
 }
