@@ -28,12 +28,12 @@ function ItemInfo(info) {
   );
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     window.addEventListener("keydown", handleKeyDown);
     document
       .getElementById("click-area")
       .addEventListener("mousedown", (event) => {
         console.log("it is clicking");
-        // history.push("/");
       });
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
@@ -52,7 +52,8 @@ function ItemInfo(info) {
   }, []);
   const handleKeyDown = (e) => {
     if (e.key === "Escape") {
-      history.push("/");
+      // history.push("/");
+      history.goBack();
     }
   };
   const contactOwnerAction = () => {
@@ -83,10 +84,6 @@ function ItemInfo(info) {
             wishlists: [...info.currentUser.wishlists, item_wished],
           });
         });
-        // history.push({
-        //   pathname: "/wishlist",
-        //   state: "updated",
-        // });
       } else {
         // DO BETTER ERROR HANDLING
         console.log("ERROORRRR");

@@ -11,7 +11,7 @@ export default function WishList(props) {
 
   return (
     <div>
-      <h1>WISHLIST</h1>
+      <h1 style={{ textAlign: "center" }}>WISHLIST</h1>
       {wished_items ? (
         <div className="wishlist__grid">
           {wished_items.map((item) => (

@@ -10,34 +10,13 @@ function DropDown(props) {
     <div>
       {props.currentUser ? (
         <div>
-          <p
-            onClick={() => {
-              history.push("/manage-items");
-            }}
-          >
-            Manage items
-          </p>
-          <p
-            onClick={() => {
-              history.push("/notifications");
-            }}
-          >
-            Notifications
-          </p>
-          <p
-            onClick={() => {
-              history.push("/reviews");
-            }}
-          >
-            Your reviews
-          </p>
-          <p
-            onClick={() => {
-              history.push("/wishlist");
-            }}
-          >
-            Your Wishlist
-          </p>
+          <a href="/manage-items" className="dropdown__links">Manage items</a>
+          <br />
+          <a href="/notifications" className="dropdown__links">Notifications</a>
+          <br />
+          <a href="/reviews" className="dropdown__links">Your reviews</a>
+          <br />
+          <a href="/wishlist" className="dropdown__links">Your wishlist</a>
           <br />
           <p onClick={props.logOut}>Log out</p>
         </div>

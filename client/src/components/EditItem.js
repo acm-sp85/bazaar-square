@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import Button from "@mui/material/Button";
 import "../styles/EditItems.css";
 
@@ -6,14 +7,15 @@ function EditItem(itemToEdit) {
   const [user, setUser] = useState("");
   const [description, setDescription] = useState("");
   const [category_id, setCategory_id] = useState("");
-  // const [user_id, setUser_id] = useState(currentUser.id);
   const [city_id, setCity_id] = useState("");
   const [item_type_id, setItem_type_id] = useState("");
   const [image, setImage] = useState("");
   const [item_name, setItem_name] = useState("");
   const [price, setPrice] = useState("");
+  const history = useHistory();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const config = {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -29,7 +31,6 @@ function EditItem(itemToEdit) {
         }
       })
       .then((result) => {
-        console.log(result);
         setDescription(result.description);
         setCategory_id(result.category_id);
         setCity_id(result.city_id);
@@ -58,7 +59,20 @@ function EditItem(itemToEdit) {
     fetch(`/items/${itemToEdit.props.history.location.state}`, config).then(
       (response) => {
         if (response.ok) {
-          console.log(response);
+          console.log(itemToEdit.props.history.location.setUsersItems);
+          response.json().then((edited_item) => {
+            console.log(edited_item);
+            history.push("/manage-items");
+            // -------
+            // info.setCurrentUser({
+            //   ...info.currentUser,
+            //   wishlists: [...info.currentUser.wishlists, item_wished],
+            // });
+            // -------
+            // itemToEdit.props.history.location.setUsersItems({
+            //   ...itemToEdit.props.history.location.usersItems,
+            // });
+          });
         } else {
           response.json().then((error) => {
             console.log(error.error);
@@ -127,7 +141,6 @@ function EditItem(itemToEdit) {
         />
         <br />
         <select value={item_type_id} onChange={handleItemType}>
-          {/* <option value="nill">Borough</option> */}
           <option value="1">Sell</option>
           <option value="2">Trade</option>
           <option value="3">Borrow</option>

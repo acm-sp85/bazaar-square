@@ -16,6 +16,7 @@ function ManageItems(props) {
     history.push({
       pathname: "/edit",
       state: item_id,
+      setUsersItems: setUsersItems,
     });
   };
   const handleDelete = (e) => {
@@ -39,7 +40,7 @@ function ManageItems(props) {
 
   return (
     <div>
-      <h1>MANAGE ITEMS</h1>
+      <h1 style={{ textAlign: "center" }}>MANAGE ITEMS</h1>
       <Button onClick={handleAddItemButton}>ADD ITEM</Button>
       {addItemActive ? (
         <AddItem
@@ -58,6 +59,8 @@ function ManageItems(props) {
               key={item.id}
               handleDelete={handleDelete}
               handleEdit={handleEdit}
+              setUsersItems={setUsersItems}
+              usersItems={usersItems}
             />
           ))
         ) : (

@@ -50,8 +50,6 @@ function App() {
   const logOut = () => {
     fetch("/logout", { method: "DELETE" }).then(() => {
       setCurrentUser(null);
-      // history.push("/login");
-      // console.log("hitting the right spot");
     });
   };
 
