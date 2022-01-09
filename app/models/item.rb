@@ -4,5 +4,5 @@ class Item < ApplicationRecord
     belongs_to :city
     belongs_to :item_type
     has_many :reviews
-    belongs_to :wishlist
+    # belongs_to :wishlist
 end

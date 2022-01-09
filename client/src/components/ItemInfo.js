@@ -83,10 +83,10 @@ function ItemInfo(info) {
             wishlists: [...info.currentUser.wishlists, item_wished],
           });
         });
-        history.push({
-          pathname: "/wishlist",
-          state: "updated",
-        });
+        // history.push({
+        //   pathname: "/wishlist",
+        //   state: "updated",
+        // });
       } else {
         // DO BETTER ERROR HANDLING
         console.log("ERROORRRR");
