@@ -65,7 +65,11 @@ function App() {
             logOut={logOut}
           />
         ) : (
-          <UnauthenticatedApp setCurrentUser={setCurrentUser} />
+          <UnauthenticatedApp
+            setCurrentUser={setCurrentUser}
+            categories={categories}
+            cities={cities}
+          />
         )}
       </BrowserRouter>
     </>

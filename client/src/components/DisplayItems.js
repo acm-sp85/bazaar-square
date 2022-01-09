@@ -7,6 +7,7 @@ function DisplayItems({ items }) {
   const history = useHistory();
   const handleInfo = (e) => {
     e.preventDefault();
+    // window.location.href = "manage-items";
     history.push({
       pathname: "/item-info",
       state: e.target.id,
