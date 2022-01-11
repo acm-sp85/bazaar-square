@@ -30,7 +30,20 @@ function ItemCard({ cardInfo, toEdit, handleDelete, handleEdit }) {
 
   return (
     <div className="item__card">
-      <img src={cardInfo.image} className="image__card" onClick={handleInfo} />
+      {cardInfo.image ? (
+        <img
+          src={cardInfo.image}
+          className="image__card"
+          onClick={handleInfo}
+        />
+      ) : (
+        <img
+          src={cardInfo.image_file}
+          className="image__card"
+          onClick={handleInfo}
+        />
+      )}
+
       <h3 onClick={handleInfo} className="link">
         {cardInfo.item_name}
       </h3>

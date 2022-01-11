@@ -24,62 +24,27 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
     formData.append("user_id", user_id);
     formData.append("city_id", city_id);
     formData.append("item_type_id", item_type_id);
-    // formData.append("image", image);
     formData.append("item_name", item_name);
     formData.append("price", price);
-    // formData.append("image_file", image_file);
+    formData.append("image_file", image_file);
     fetch(`/items`, {
       method: "POST",
       body: formData,
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then(() => {});
+    }).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          console.log(data);
+          setUsersItems([...currentUser.items, data]);
+          setAddItemActive(false);
+        });
       } else {
-        r.json().then((err) => (err ? setError(err.errors) : setError(null)));
+        response
+          .json()
+          .then((err) => (err ? setError(err.errors) : setError(null)));
       }
     });
   }
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("Create item");
-  //   const formData = new FormData();
 
-  //   console.log(formData);
-  //   const config = {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: formData,
-  //   };
-
-  // const config = {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({
-  //     description,
-  //     category_id,
-  //     user_id,
-  //     city_id,
-  //     item_type_id,
-  //     image,
-  //     item_name,
-  //     price,
-  //   }),
-  // };
-
-  //   fetch("/items", config).then((response) => {
-  //     if (response.ok) {
-  //       response.json().then((data) => {
-  //         console.log(data);
-  //         setUsersItems([...currentUser.items, data]);
-  //         setAddItemActive(false);
-  //       });
-  //     } else {
-  //       response.json().then((error) => {
-  //         setError(error.errors);
-  //       });
-  //     }
-  //   });
-  // };
   const handleCategory = (e) => {
     setCategory_id(e.target.value);
   };
@@ -129,14 +94,6 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
           placeholder="Description..."
           value={description}
           onChange={(e) => setDescription(e.target.value)}
-        />
-        <br />
-        <input
-          className="custom-imputs"
-          type="text"
-          placeholder="Image..."
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
         />
         <br />
         <select value={item_type_id} onChange={handleItemType}>
