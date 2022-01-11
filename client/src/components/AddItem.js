@@ -10,7 +10,6 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
   const [user_id, setUser_id] = useState(currentUser.id);
   const [city_id, setCity_id] = useState("");
   const [item_type_id, setItem_type_id] = useState("");
-  const [image, setImage] = useState("");
   const [image_file, setImage_file] = useState(null);
   const [item_name, setItem_name] = useState("");
   const [price, setPrice] = useState("");
@@ -62,6 +61,7 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
         <input
           className="custom-imputs"
           type="text"
+          required
           placeholder="Item name..."
           value={item_name}
           onChange={(e) => setItem_name(e.target.value)}
@@ -90,6 +90,7 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
         <br />
         <input
           className="custom-imputs"
+          required
           type="text"
           placeholder="Description..."
           value={description}
@@ -108,6 +109,7 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
         {forSale ? (
           <input
             className="custom-imputs"
+            required
             type="text"
             placeholder="Price..."
             value={price}
@@ -116,18 +118,30 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
         ) : (
           <></>
         )}
-        <br />
         <input
           className="custom-imputs"
           required
           type="file"
-          accept="image/*"
+          // accept="image/*"
+          accept="image/x-png,image/gif,image/jpeg"
           multiple={false}
           onChange={(e) => setImage_file(e.target.files[0])}
         />
-        <button onClick={handleSubmit} type="submit">
-          CREATE ITEM
-        </button>
+        {description &&
+        category_id &&
+        user_id &&
+        city_id &&
+        item_type_id &&
+        item_name &&
+        price &&
+        image_file ? (
+          <button onClick={handleSubmit} type="submit">
+            CREATE ITEM
+          </button>
+        ) : (
+          <button disabled>CREATE ITEM</button>
+        )}
+
         {error ? (
           <React.Fragment>
             <p className="error">

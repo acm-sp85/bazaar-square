@@ -33,7 +33,8 @@ function UploadImageForm(props) {
           className="custom-imputs"
           required
           type="file"
-          accept="image/*"
+          // accept="image/*"
+          accept="image/png,image/gif,image/jpeg"
           multiple={false}
           onChange={(e) => setImage_file(e.target.files[0])}
         />

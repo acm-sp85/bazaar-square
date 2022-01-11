@@ -14,13 +14,25 @@ function DisplayItems({ items }) {
     <div className="items__grid__preview">
       {items.length ? (
         items.map((item) => (
-          <img
-            src={item.image}
-            className="card__image"
-            id={item.id}
-            key={item.id}
-            onClick={handleInfo}
-          />
+          <div key={item.id}>
+            {item.image_file ? (
+              <img
+                src={item.image_file}
+                key={item.id}
+                id={item.id}
+                className="image__card"
+                onClick={handleInfo}
+              />
+            ) : (
+              <img
+                src={item.image}
+                key={item.id}
+                id={item.id}
+                className="image__card"
+                onClick={handleInfo}
+              />
+            )}
+          </div>
         ))
       ) : (
         <div></div>
