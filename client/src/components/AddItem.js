@@ -16,53 +16,70 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
   const [price, setPrice] = useState("");
   const [forSale, setForSale] = useState(false);
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    console.log("Create item");
     const formData = new FormData();
     formData.append("description", description);
     formData.append("category_id", category_id);
     formData.append("user_id", user_id);
     formData.append("city_id", city_id);
     formData.append("item_type_id", item_type_id);
-    formData.append("image", image);
+    // formData.append("image", image);
     formData.append("item_name", item_name);
     formData.append("price", price);
-    formData.append("image_file", image_file);
-    const config = {
+    // formData.append("image_file", image_file);
+    fetch(`/items`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: formData,
-    };
-
-    // const config = {
-    //   method: "POST",
-    //   headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     description,
-    //     category_id,
-    //     user_id,
-    //     city_id,
-    //     item_type_id,
-    //     image,
-    //     item_name,
-    //     price,
-    //   }),
-    // };
-
-    fetch("/items", config).then((response) => {
-      if (response.ok) {
-        response
-          .json()
-          .then((data) => setUsersItems([...currentUser.items, data]));
-        setAddItemActive(false);
+    }).then((r) => {
+      if (r.ok) {
+        r.json().then(() => {});
       } else {
-        response.json().then((error) => {
-          setError(error.errors);
-        });
+        r.json().then((err) => (err ? setError(err.errors) : setError(null)));
       }
     });
-  };
+  }
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Create item");
+  //   const formData = new FormData();
+
+  //   console.log(formData);
+  //   const config = {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: formData,
+  //   };
+
+  // const config = {
+  //   method: "POST",
+  //   headers: { "Content-Type": "application/json" },
+  //   body: JSON.stringify({
+  //     description,
+  //     category_id,
+  //     user_id,
+  //     city_id,
+  //     item_type_id,
+  //     image,
+  //     item_name,
+  //     price,
+  //   }),
+  // };
+
+  //   fetch("/items", config).then((response) => {
+  //     if (response.ok) {
+  //       response.json().then((data) => {
+  //         console.log(data);
+  //         setUsersItems([...currentUser.items, data]);
+  //         setAddItemActive(false);
+  //       });
+  //     } else {
+  //       response.json().then((error) => {
+  //         setError(error.errors);
+  //       });
+  //     }
+  //   });
+  // };
   const handleCategory = (e) => {
     setCategory_id(e.target.value);
   };
@@ -76,8 +93,7 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
   };
   return (
     <div style={{ textAlign: "center" }} className="centered">
-      {/* <FormGroup onSubmit={handleSubmit}> */}
-      <form>
+      <FormGroup onSubmit={handleSubmit}>
         <input
           className="custom-imputs"
           type="text"
@@ -144,6 +160,14 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
           <></>
         )}
         <br />
+        <input
+          className="custom-imputs"
+          required
+          type="file"
+          accept="image/*"
+          multiple={false}
+          onChange={(e) => setImage_file(e.target.files[0])}
+        />
         <button onClick={handleSubmit} type="submit">
           CREATE ITEM
         </button>
@@ -158,18 +182,7 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
         ) : (
           <React.Fragment> </React.Fragment>
         )}
-        <input
-          // className="custom-imputs"
-          type="file"
-          accept="image/*"
-          multiple={false}
-          onChange={(e) => setImage_file(e.target.files[0])}
-          onClick={() => {
-            console.log("should pop");
-          }}
-        />
-      </form>
-      {/* </FormGroup> */}
+      </FormGroup>
     </div>
   );
 }

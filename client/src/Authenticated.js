@@ -18,6 +18,7 @@ import ItemTypeCategory from "./components/ItemTypeCategory";
 import MessageSend from "./components/MessageSend";
 import WishList from "./components/WishList";
 import Footer from "./components/Footer";
+import UploadImageForm from "./components/UploadImageForm";
 
 function Authenticated({
   currentUser,
@@ -48,6 +49,7 @@ function Authenticated({
               />
             )}
           />
+
           <Route
             exact
             path="/manage-items"

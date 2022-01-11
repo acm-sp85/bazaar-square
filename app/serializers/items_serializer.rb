@@ -8,8 +8,8 @@ class ItemsSerializer < ActiveModel::Serializer
   def category_name
     object.category.category_name
   end
-def image
-    rails_blob_url(object.image, only_path: true) if object.image.attached?
+def image_file
+    rails_blob_url(object.image_file, only_path: true) if object.image_file.attached?
   end
 
   def owner
