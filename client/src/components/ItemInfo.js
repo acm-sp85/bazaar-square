@@ -109,21 +109,21 @@ function ItemInfo(info) {
           </Button>
 
           <CardContent>
-            {itemInfo.image ? (
+            {itemInfo.image_file ? (
+              <CardMedia
+                component="img"
+                height="300"
+                image={itemInfo.image_file}
+                style={{ contentFit: "contain" }}
+                alt="card-media"
+              />
+            ) : (
               <CardMedia
                 component="img"
                 height="300"
                 image={itemInfo.image}
                 alt="card-media"
                 style={{ contentFit: "contain" }}
-                />
-                ) : (
-                  <CardMedia
-                  component="img"
-                  height="300"
-                  image={itemInfo.image_file}
-                  style={{ contentFit: "contain" }}
-                alt="card-media"
               />
             )}
             <Typography

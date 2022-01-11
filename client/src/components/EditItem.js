@@ -12,6 +12,7 @@ function EditItem(itemToEdit) {
   const [image, setImage] = useState("");
   const [item_name, setItem_name] = useState("");
   const [price, setPrice] = useState("");
+  const [image_file, setImage_file] = useState(null);
   const history = useHistory();
 
   useEffect(() => {
@@ -35,51 +36,48 @@ function EditItem(itemToEdit) {
         setCategory_id(result.category_id);
         setCity_id(result.city_id);
         setItem_type_id(result.item_type_id);
-        setImage(result.image);
         setItem_name(result.item_name);
         setPrice(result.price);
+        setImage(result.image);
+        setImage_file(result.image_file);
       });
   }, [itemToEdit]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const config = {
+    const formData = new FormData();
+    formData.append("description", description);
+    formData.append("category_id", category_id);
+    formData.append("city_id", city_id);
+    formData.append("item_type_id", item_type_id);
+    formData.append("item_name", item_name);
+    formData.append("price", price);
+    // formData.append("image_file", image_file);
+    fetch(`/items/${itemToEdit.props.history.location.state}`, {
       method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        description,
-        category_id,
-        city_id,
-        item_type_id,
-        image,
-        item_name,
-        price,
-      }),
-    };
-    fetch(`/items/${itemToEdit.props.history.location.state}`, config).then(
-      (response) => {
-        if (response.ok) {
-          console.log(itemToEdit.props.history.location.setUsersItems);
-          response.json().then((edited_item) => {
-            console.log(edited_item);
-            history.push("/manage-items");
-            // -------
-            // info.setCurrentUser({
-            //   ...info.currentUser,
-            //   wishlists: [...info.currentUser.wishlists, item_wished],
-            // });
-            // -------
-            // itemToEdit.props.history.location.setUsersItems({
-            //   ...itemToEdit.props.history.location.usersItems,
-            // });
-          });
-        } else {
-          response.json().then((error) => {
-            console.log(error.error);
-          });
-        }
+      body: formData,
+    }).then((response) => {
+      if (response.ok) {
+        console.log(itemToEdit.props.history.location.setUsersItems);
+        response.json().then((edited_item) => {
+          console.log(edited_item);
+          history.push("/manage-items");
+          // -------
+          // info.setCurrentUser({
+          //   ...info.currentUser,
+          //   wishlists: [...info.currentUser.wishlists, item_wished],
+          // });
+          // -------
+          // itemToEdit.props.history.location.setUsersItems({
+          //   ...itemToEdit.props.history.location.usersItems,
+          // });
+        });
+      } else {
+        response.json().then((error) => {
+          console.log(error.error);
+        });
       }
-    );
+    });
   };
   const handleCategory = (e) => {
     setCategory_id(e.target.value);
@@ -132,14 +130,6 @@ function EditItem(itemToEdit) {
           onChange={(e) => setDescription(e.target.value)}
         />
         <br />
-        <input
-          className="custom-imputs"
-          type="text"
-          placeholder="Image..."
-          value={image}
-          onChange={(e) => setImage(e.target.value)}
-        />
-        <br />
         <select value={item_type_id} onChange={handleItemType}>
           <option value="1">Sell</option>
           <option value="2">Trade</option>
@@ -158,6 +148,25 @@ function EditItem(itemToEdit) {
           <></>
         )}
 
+        <br />
+    
+        {image_file ? (
+          <img src={image_file} style={{ maxHeight: "80px" }} />
+        ) : (
+          <img src={image} style={{ maxHeight: "80px" }} />
+        )}
+
+        <br />
+        <button
+          onClick={() => {
+            history.push({
+              pathname: "image-upload",
+              state: itemToEdit.props.history.location.state,
+            });
+          }}
+        >
+          Change Image
+        </button>
         <br />
         <Button type="submit">UPDATE ITEM</Button>
       </form>

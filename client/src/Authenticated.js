@@ -63,6 +63,17 @@ function Authenticated({
           />
           <Route
             exact
+            path="/image-upload"
+            render={(props) => (
+              <UploadImageForm
+                props={props}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            )}
+          />
+          <Route
+            exact
             path="/notifications"
             render={(props) => (
               <Notifications
