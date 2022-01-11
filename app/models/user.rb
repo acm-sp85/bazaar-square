@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
     validates :user_name, :email, :phone , :city_id , presence: true
     validates :user_name, :email , :phone , uniqueness: true 
+    validates :email, format: { with: URI::MailTo::EMAIL_REGEXP } 
 
     has_secure_password
 end

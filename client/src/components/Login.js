@@ -72,7 +72,7 @@ function Login({ setCurrentUser }) {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <br/>
+          <br />
           <input
             className="custom__imputs"
             type="password"
@@ -84,12 +84,17 @@ function Login({ setCurrentUser }) {
           <br />
           <Button onClick={handleSubmit}>LOGIN</Button>
         </FormGroup>
-        <Button
+        <a
           href="/signup"
-          style={{ display: "flex", justifyContent: "center" }}
+          style={{
+            fontSize: "10px",
+            textDecoration: "none",
+            color: "black",
+            cursor: "pointer",
+          }}
         >
-          SIGN UP
-        </Button>
+          - Sign up -
+        </a>
         {error ? (
           <p style={{ textAlign: "center", color: "red" }}>{error}</p>
         ) : (

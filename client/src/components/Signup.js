@@ -41,9 +41,7 @@ function Signup({ setCurrentUser }) {
         });
       } else {
         response.json().then((error) => {
-          console.log(error.errors);
           setError(error.errors);
-          console.log(error);
         });
       }
     });
@@ -66,7 +64,7 @@ function Signup({ setCurrentUser }) {
         />
 
         <h3>SIGNUP</h3>
-        <br/>
+        <br />
         <FormGroup onSubmit={handleSubmit}>
           <input
             className="custom-imputs"
@@ -78,7 +76,7 @@ function Signup({ setCurrentUser }) {
           <br />
           <input
             className="custom-imputs"
-            type="text"
+            type="email"
             placeholder="Email..."
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -125,7 +123,7 @@ function Signup({ setCurrentUser }) {
             <React.Fragment>
               <p className="error">
                 {error.map((e) => (
-                  <p>{e}</p>
+                  <p style={{ color: "red" }}>{e}</p>
                 ))}
               </p>
             </React.Fragment>
@@ -139,7 +137,17 @@ function Signup({ setCurrentUser }) {
           >
             SIGNUP
           </Button>
-          <p>{/* <Link to="/login">Log in</Link> */}</p>
+          <a
+            href="/"
+            style={{
+              fontSize: "10px",
+              textDecoration: "none",
+              color: "black",
+              cursor: "pointer",
+            }}
+          >
+            - Login -
+          </a>
         </FormGroup>
       </div>
     </div>

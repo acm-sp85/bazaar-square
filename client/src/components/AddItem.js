@@ -4,6 +4,7 @@ import { FormGroup } from "@mui/material";
 
 function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
   const [user, setUser] = useState("");
+  const [error, setError] = useState("");
   const [description, setDescription] = useState("");
   const [category_id, setCategory_id] = useState("");
   const [user_id, setUser_id] = useState(currentUser.id);
@@ -32,11 +33,19 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
       }),
     };
 
-    fetch("/items", requestOptionsCard)
-      .then((response) => response.json())
-      .then((data) => setUsersItems([...currentUser.items, data]));
-    console.log("eooo");
-    setAddItemActive(false);
+
+    fetch("/items", requestOptionsCard).then((response) => {
+      if (response.ok) {
+        response
+          .json()
+          .then((data) => setUsersItems([...currentUser.items, data]));
+        setAddItemActive(false);
+      } else {
+        response.json().then((error) => {
+          setError(error.errors);
+        });
+      }
+    });
   };
   const handleCategory = (e) => {
     setCategory_id(e.target.value);
@@ -120,6 +129,17 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
         <Button onClick={handleSubmit} type="submit">
           CREATE ITEM
         </Button>
+        {error ? (
+          <React.Fragment>
+            <p className="error">
+              {error.map((e) => (
+                <p style={{color:"red"}}>{e}</p>
+              ))}
+            </p>
+          </React.Fragment>
+        ) : (
+          <React.Fragment> </React.Fragment>
+        )}
       </FormGroup>
     </div>
   );
