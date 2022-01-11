@@ -1,12 +1,16 @@
 class ItemsSerializer < ActiveModel::Serializer
-  attributes :id, :item_name, :description , :category_name, :owner, :owner_id, :type, :image, :location, :category_id, :city_id, :item_type_id, :owner_reviews, :price
+  include Rails.application.routes.url_helpers
+  # include ImageConcern
+  attributes :id, :item_name, :description , :category_name, :owner, :owner_id, :type, :image, :location, :category_id, :city_id, :item_type_id, :owner_reviews, :price, :image_file
 
   has_many :reviews
 
   def category_name
     object.category.category_name
   end
-
+def image
+    rails_blob_url(object.image, only_path: true) if object.image.attached?
+  end
 
   def owner
     object.user.user_name

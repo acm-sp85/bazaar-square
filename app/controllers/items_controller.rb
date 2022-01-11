@@ -77,8 +77,6 @@ class ItemsController < ApplicationController
   end
     def find_by_name
           
-      # @name_to_find = Item.where("item_name like ?", "%#{params[:item_name]}%")
-      # @name_to_find = Item.where("lower(item_name) || item_name like ?", "%#{params[:item_name]}%")
           @name_to_find = Item.joins(:user).joins(:city).joins(:item_type).joins(:category).where("description || lower(description) || category_name || lower(category_name) || name || lower(name) || city_name || lower(city_name)|| lower(item_name) || item_name || user_name || lower(user_name) like ?", "%#{params[:item_name]}%")
 
           if @name_to_find !=[]
@@ -94,7 +92,7 @@ class ItemsController < ApplicationController
   private
 
   def items_params
-  params.permit(:id, :user_id, :city_id, :description, :item_type_id, :category_id, :item_name, :image, :price)
+  params.permit(:id, :user_id, :city_id, :description, :item_type_id, :category_id, :item_name, :image, :price, :image_file)
   end
 
   def set_item
