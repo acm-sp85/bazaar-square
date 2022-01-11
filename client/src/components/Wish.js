@@ -35,6 +35,7 @@ function Wish(props) {
           fontSize="small"
           onClick={handleDelete}
           key={props.info.item_info.id}
+          className="link"
         />
       </div>
     </div>

@@ -54,78 +54,94 @@ function Signup({ setCurrentUser }) {
   };
 
   return (
-    <div className="centered">
-      <h3>SIGNUP</h3>
-      <FormGroup onSubmit={handleSubmit}>
-        <input
-          className="custom-imputs"
-          type="text"
-          placeholder="Name..."
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-        />
-        <br />
-        <input
-          className="custom-imputs"
-          type="text"
-          placeholder="Email..."
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <input
-          className="custom-imputs"
-          type="text"
-          placeholder="Phone..."
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
+    <div className="landing__container">
+      <div className="centered">
+        <img
+          className="header__icon"
+          onClick={() => {
+            history.push("/");
+          }}
+          src="https://dcassetcdn.com/design_img/3096767/681086/681086_17136101_3096767_2dbcc4ed_image.png"
+          alt=""
         />
 
-        <br />
+        <h3>SIGNUP</h3>
+        <br/>
+        <FormGroup onSubmit={handleSubmit}>
+          <input
+            className="custom-imputs"
+            type="text"
+            placeholder="Name..."
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          <br />
+          <input
+            className="custom-imputs"
+            type="text"
+            placeholder="Email..."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <input
+            className="custom-imputs"
+            type="text"
+            placeholder="Phone..."
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
 
-        <select value={city} onChange={handleBorough}>
-          <option value="nill">Borough</option>
-          <option value="1">Manhattan</option>
-          <option value="2">Brooklyn</option>
-          <option value="3">Queens</option>
-          <option value="4">Bronx</option>
-          <option value="5">Staten Island</option>
-        </select>
+          <br />
 
-        <br />
-        <input
-          className="custom-imputs"
-          type="password"
-          placeholder="Password..."
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <input
-          className="custom-imputs"
-          type="password"
-          placeholder="Confirm Password..."
-          value={passwordConfirmation}
-          onChange={(e) => setPasswordConfirmation(e.target.value)}
-        />
-        <br />
-        <br />
-        {error ? (
-          <React.Fragment>
-            <p className="error">
-              {error.map((e) => (
-                <p>{e}</p>
-              ))}
-            </p>
-          </React.Fragment>
-        ) : (
-          <React.Fragment> </React.Fragment>
-        )}
-        <Button className="custom-button" type="submit" onClick={handleSubmit}>
-          SIGNUP
-        </Button>
-        <p>{/* <Link to="/login">Log in</Link> */}</p>
-      </FormGroup>
+          <select value={city} onChange={handleBorough}>
+            <option value="nill">Borough</option>
+            <option value="1">Manhattan</option>
+            <option value="2">Brooklyn</option>
+            <option value="3">Queens</option>
+            <option value="4">Bronx</option>
+            <option value="5">Staten Island</option>
+          </select>
+
+          <br />
+          <input
+            className="custom-imputs"
+            type="password"
+            placeholder="Password..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <input
+            className="custom-imputs"
+            type="password"
+            placeholder="Confirm Password..."
+            value={passwordConfirmation}
+            onChange={(e) => setPasswordConfirmation(e.target.value)}
+          />
+          <br />
+          <br />
+          {error ? (
+            <React.Fragment>
+              <p className="error">
+                {error.map((e) => (
+                  <p>{e}</p>
+                ))}
+              </p>
+            </React.Fragment>
+          ) : (
+            <React.Fragment> </React.Fragment>
+          )}
+          <Button
+            className="custom-button"
+            type="submit"
+            onClick={handleSubmit}
+          >
+            SIGNUP
+          </Button>
+          <p>{/* <Link to="/login">Log in</Link> */}</p>
+        </FormGroup>
+      </div>
     </div>
   );
 }

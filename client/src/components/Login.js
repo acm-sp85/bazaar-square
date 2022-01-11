@@ -39,35 +39,63 @@ function Login({ setCurrentUser }) {
   };
 
   return (
-    <div className="centered">
-      <FormGroup onSubmit={handleSubmit} className="form__box">
-        <input
-          className="custom__imputs"
-          type="text"
-          placeholder="Email..."
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+    <div className="landing__container">
+      <div className="centered">
+        <img
+          className="header__icon"
+          onClick={() => {
+            history.push("/");
+          }}
+          src="https://dcassetcdn.com/design_img/3096767/681086/681086_17136101_3096767_2dbcc4ed_image.png"
+          alt=""
         />
-        <input
-          className="custom__imputs"
-          type="password"
-          placeholder="Password..."
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <Button onClick={handleSubmit}>LOGIN</Button>
-      </FormGroup>
-      <Button
-        href="/signup"
-        style={{ display: "flex", justifyContent: "center" }}
-      >
-        SIGN UP
-      </Button>
-      {error ? (
-        <p style={{ textAlign: "center", color: "red" }}>{error}</p>
-      ) : (
-        <></>
-      )}
+        <h3 variant="body1" style={{ textAlign: "center", color: "grey" }}>
+          Random Bazaar is a market place to share goods with your community.
+        </h3>
+        <h4
+          variant="body1"
+          style={{ textAlign: "center", color: "grey", marginBottom: "50px" }}
+        >
+          Donate, borrow, trade or sell your goods in our platform.
+        </h4>
+        <h4
+          variant="body1"
+          style={{ textAlign: "center", color: "grey", marginBottom: "50px" }}
+        >
+          Log in or Sign up to enjoy the full experience.
+        </h4>
+        <FormGroup onSubmit={handleSubmit} className="form__box">
+          <input
+            className="custom__imputs"
+            type="text"
+            placeholder="Email..."
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br/>
+          <input
+            className="custom__imputs"
+            type="password"
+            placeholder="Password..."
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <br />
+          <Button onClick={handleSubmit}>LOGIN</Button>
+        </FormGroup>
+        <Button
+          href="/signup"
+          style={{ display: "flex", justifyContent: "center" }}
+        >
+          SIGN UP
+        </Button>
+        {error ? (
+          <p style={{ textAlign: "center", color: "red" }}>{error}</p>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 }

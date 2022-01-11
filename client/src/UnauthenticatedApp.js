@@ -21,6 +21,7 @@ function UnauthenticatedApp({ setCurrentUser, categories, cities }) {
   const history = useHistory();
   return (
     <div>
+    
       <BrowserRouter>
         {/* <Header /> */}
         <Switch>

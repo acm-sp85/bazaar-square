@@ -136,9 +136,20 @@ function Authenticated({
               />
             )}
           />
-          <Route
+          {/* <Route
             exact
             path="/item-info"
+            render={(props) => (
+              <ItemInfo
+                props={props}
+                currentUser={currentUser}
+                setCurrentUser={setCurrentUser}
+              />
+            )}
+          /> */}
+          <Route
+            exact
+            path="/item/:id"
             render={(props) => (
               <ItemInfo
                 props={props}

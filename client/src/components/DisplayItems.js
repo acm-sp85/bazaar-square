@@ -7,11 +7,8 @@ function DisplayItems({ items }) {
   const history = useHistory();
   const handleInfo = (e) => {
     e.preventDefault();
-    // window.location.href = "manage-items";
-    history.push({
-      pathname: "/item-info",
-      state: e.target.id,
-    });
+    console.log("mec");
+    window.location.href = `item/${e.target.id}`;
   };
   return (
     <div className="items__grid__preview">
