@@ -15,10 +15,12 @@ function ItemInfo(info) {
 
   const [itemInfo, setItemInfo] = useState(info);
   const [user, setUser] = useState(info.currentUser);
+  const [wishes_ids, setWishes_ids] = useState([]);
   const history = useHistory();
-  const users_wishes_ids = info.currentUser.wishlists.map(
-    (wish) => wish.item_info.id
-  );
+
+  useEffect(() => {
+    setWishes_ids(info.currentUser.wishlists.map((wish) => wish.item_id));
+  }, []);
 
   const bull = (
     <Box
@@ -32,6 +34,7 @@ function ItemInfo(info) {
   useEffect(() => {
     window.scrollTo(0, 0);
     window.addEventListener("keydown", handleKeyDown);
+
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
@@ -64,6 +67,8 @@ function ItemInfo(info) {
 
   const addToWishlist = () => {
     console.log("add to wishlist");
+    setWishes_ids([parseInt(id), ...wishes_ids]);
+    console.log(id);
     const config = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -77,7 +82,6 @@ function ItemInfo(info) {
     fetch("/wishlist", config).then((response) => {
       if (response.ok) {
         response.json().then((item_wished) => {
-          console.log(info.currentUser.wishlists);
           info.setCurrentUser({
             ...info.currentUser,
             wishlists: [...info.currentUser.wishlists, item_wished],
@@ -92,6 +96,7 @@ function ItemInfo(info) {
 
   return (
     <div>
+      {/* {console.log(info.currentUser.wishlists)} */}
       <Box
         id="click-area"
         className="centered__itemInfo"
@@ -161,9 +166,8 @@ function ItemInfo(info) {
                     <Button size="small" onClick={contactOwnerAction}>
                       Contact owner - {itemInfo.owner}
                     </Button>
-                    {users_wishes_ids.filter(
-                      (wish_id) => wish_id == itemInfo.id
-                    ).length > 0 ? (
+                    {wishes_ids.filter((wish_id) => wish_id === itemInfo.id)
+                      .length > 0 ? (
                       <Button disabled>Added to Wishlist</Button>
                     ) : (
                       <Button size="small" onClick={addToWishlist}>

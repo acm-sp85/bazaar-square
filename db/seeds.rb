@@ -142,3 +142,5 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
         city_id:rand(1..5),
         item_type_id:rand(1..4)
     )}
+
+Wishlist.create(user_id: 1,  name: "wishlist")

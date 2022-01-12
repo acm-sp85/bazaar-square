@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 import useHandleClickInfo from "./useHandleClickInfo";
 
 function Wish(props) {
+  const [images, setImages] = useState(null);
   const handleInfo = useHandleClickInfo(props.info.item_info.id);
+
+  useEffect(() => {
+    console.log(props.info.item_info);
+  });
   const handleDelete = (e) => {
     console.log(props.info.id);
     console.log(props.setWished_items);
@@ -22,8 +27,9 @@ function Wish(props) {
     );
   };
   return (
+    // <div>{console.log(props)}</div>
     <div key={props.info.item_info.id}>
-      {props.info.item_info.image_file ? (
+      {/* {props.info.item_info.image_file ? (
         <img
           src={props.info.item_info.image_file}
           className="wishlist__card link"
@@ -35,14 +41,9 @@ function Wish(props) {
           className="wishlist__card link"
           onClick={handleInfo}
         />
-      )}
-      {/* <img
-        className="wishlist__card link"
-        src={props.info.item_info.image}
-        onClick={handleInfo}
-      /> */}
-      <div>
-        <p>{props.info.item_info.item_name}</p>
+      )} */}
+
+      <div style={{ display: "flex", marginBottom: "10px" }}>
         <DeleteIcon
           color="error"
           fontSize="small"
@@ -50,6 +51,16 @@ function Wish(props) {
           key={props.info.item_info.id}
           className="link"
         />
+        <div
+          onClick={handleInfo}
+          style={{ marginLeft: "15px", marginTop: "5px" }}
+        >
+          <p> {props.info.item_info.item_name}</p>
+          <p style={{ marginLeft: "15px", fontSize: "11px" }}>
+            {" "}
+            {props.info.item_info.description}
+          </p>
+        </div>
       </div>
     </div>
   );
