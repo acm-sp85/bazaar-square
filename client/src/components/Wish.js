@@ -23,11 +23,24 @@ function Wish(props) {
   };
   return (
     <div key={props.info.item_info.id}>
-      <img
+      {props.info.item_info.image_file ? (
+        <img
+          src={props.info.item_info.image_file}
+          className="wishlist__card link"
+          onClick={handleInfo}
+        />
+      ) : (
+        <img
+          src={props.info.item_info.image}
+          className="wishlist__card link"
+          onClick={handleInfo}
+        />
+      )}
+      {/* <img
         className="wishlist__card link"
         src={props.info.item_info.image}
         onClick={handleInfo}
-      />
+      /> */}
       <div>
         <p>{props.info.item_info.item_name}</p>
         <DeleteIcon

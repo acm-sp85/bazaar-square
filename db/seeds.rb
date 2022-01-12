@@ -10,9 +10,6 @@ User.destroy_all
 
 puts '🏙️ 🌆 Seeding cities 🏙️ 🌆 '
 
-# 10.times {City.create(
-#     city_name: Faker::Address.unique.state
-# )}
 
 City.create(city_name: "Manhattan")
 City.create(city_name: "Brooklyn")
@@ -56,7 +53,7 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
     )}
 
  
-    puts 'Seeding items'
+    puts 🚲  🥎  🏄‍♂️ 'Seeding items' 🛠️ 🖌️ 🚗
      
     # Vehicles
      Category.create(

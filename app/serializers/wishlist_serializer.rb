@@ -1,14 +1,17 @@
 class WishlistSerializer < ActiveModel::Serializer
-  attributes :id, :name, :user_id, :item_id, :item_info
-  # , :category_name
+
+  attributes :id, :name, :user_id, :item_id, :item_info 
+
 
   def item_info
     @itemmm = Item.find_by(id: object.item_id)
-    return @itemmm
+    return @itemmm 
+    # return @itemmm ,serializer: ItemsSerializer
   end
-# def category_name
-#     @itemmm.category.category_name
-#   end
+
+  # def image_file
+
+  # end
 
   
 end
