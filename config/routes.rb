@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :chatrooms
   resources :wishlists
   resources :messages
   resources :reviews
@@ -17,6 +18,7 @@ Rails.application.routes.draw do
   get "/users/:id", to: "users#show"
   get "/users/:id/rating", to: "users#rating_average"
   get "/me", to: "users#logged_id"
+
 
 
   post "/login", to: "sessions#create"
