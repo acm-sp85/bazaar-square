@@ -55,8 +55,11 @@ function Wish(props) {
           onClick={handleInfo}
           style={{ marginLeft: "15px", marginTop: "5px" }}
         >
-          <p> {props.info.item_info.item_name}</p>
-          <p style={{ marginLeft: "15px", fontSize: "11px" }}>
+          <p style={{ cursor: "pointer" }}> {props.info.item_info.item_name}</p>
+
+          <p
+            style={{ marginLeft: "15px", fontSize: "11px", cursor: "pointer" }}
+          >
             {" "}
             {props.info.item_info.description}
           </p>

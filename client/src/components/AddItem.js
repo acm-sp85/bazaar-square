@@ -133,7 +133,6 @@ function AddItem({ currentUser, setUsersItems, setAddItemActive }) {
         city_id &&
         item_type_id &&
         item_name &&
-        price &&
         image_file ? (
           <button onClick={handleSubmit} type="submit">
             CREATE ITEM
