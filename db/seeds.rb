@@ -53,7 +53,7 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
     )}
 
  
-    puts 🚲  🥎  🏄‍♂️ 'Seeding items' 🛠️ 🖌️ 🚗
+    puts '🚲  🥎  🏄‍♂️ Seeding items 🛠️ 🖌️ 🚗'
      
     # Vehicles
      Category.create(
@@ -143,4 +143,8 @@ puts '🧔 🧑‍🦰 🧔 🧑‍🦰 Seeding users 🧔 🧑‍🦰 🧔 🧑
         item_type_id:rand(1..4)
     )}
 
-Wishlist.create(user_id: 1,  name: "wishlist")
+
+
+
+
+Wishlist.create(user_id: 1,  name: "wishlist", item_id: 20)
