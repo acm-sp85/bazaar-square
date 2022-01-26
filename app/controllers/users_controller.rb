@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-   before_action :check_authorization, except: [:create, :show, :index]
+   before_action :check_authorization, except: [:create, :show]
      before_action :set_user, only: [:show,:password, :password_confirmation, :logged_id]
      before_action :set_look_user, only: [:show]
 
