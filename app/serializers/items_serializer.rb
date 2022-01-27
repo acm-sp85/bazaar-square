@@ -4,6 +4,8 @@ class ItemsSerializer < ActiveModel::Serializer
   attributes :id, :item_name, :description , :category_name, :owner, :owner_id, :type, :image, :location, :category_id, :city_id, :item_type_id, :owner_reviews, :price, :image_file
 
   has_many :reviews
+  # has_many :wishlist
+
   # belongs_to :wishlists
 
   def category_name

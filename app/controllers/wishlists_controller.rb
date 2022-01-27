@@ -7,6 +7,16 @@ class WishlistsController < ApplicationController
     render json: lists, each_serializer: WishlistSerializer, status: :ok
 end
 
+def show
+    if @wishlist 
+      render json: @wishlist, serializer: WishlistSerializer, status: :ok
+      
+    else
+      render json: {error: "Wish not found"} , status: :not_found
+    end
+
+end
+
   def create
     wish = Wishlist.create(wishlist_params)
     if wish.valid?
@@ -36,6 +46,6 @@ end
         params.permit(:id, :user_id, :name, :item_id)
   end
   def set_wishlists
-        @wishlist = Wishlist.find_by(id: params[:id])
+        @wishlist =  Wishlist.find(params[:id])
   end
 end
