@@ -1,31 +1,38 @@
-# README
+# RANDOM BAZAAR
 
+<div align="center">
 <img src="Random Bazaar.gif">
+</div>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<br>
 
-Things you may want to cover:
+## A market place to share goods with your community.
 
-- Ruby version
+### Donate, borrow, trade or sell your goods in our platform.
 
-- System dependencies
+<br>
 
-- Configuration
+## Installation
 
-- Database creation
+```ruby
+$ git clone
+$ bundle install
+$ rails db:migrate
+$ rails db:seed
+$ rails s
+$ npm start --prefix client
+```
 
-- Database initialization
+Open Chrome browser, and redirect to 'http://localhost:4000' to start the app.
 
-- How to run the test suite
+**Alternatively, it is fully deployed on Heroku!**
+<br>
+<a href="https://vast-wave-11631.herokuapp.com/">Random Bazaar</a>
 
-- Services (job queues, cache servers, search engines, etc.)
+## Stack
 
-- Deployment instructions
-
-- ...
-
-# bazaar-square
-
-1. Bundle install
-2. cd into Client. npm install
+- [x] Active Record
+- [x] Rails
+- [x] Bcrypt
+- [x] PostgreSQL
+- [x] Material UI
