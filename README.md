@@ -1,6 +1,6 @@
 # README
 
-![RandomBazaar](Random Bazaar.gif)
+<img src="Random Bazaar.gif">
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
