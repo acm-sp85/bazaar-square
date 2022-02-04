@@ -85,7 +85,7 @@ function Authenticated({
           />
           <Route
             exact
-            path="/reviews"
+            path="/your-reviews"
             render={(props) => (
               <Reviews
                 props={props}
@@ -149,17 +149,6 @@ function Authenticated({
               />
             )}
           />
-          {/* <Route
-            exact
-            path="/item-info"
-            render={(props) => (
-              <ItemInfo
-                props={props}
-                currentUser={currentUser}
-                setCurrentUser={setCurrentUser}
-              />
-            )}
-          /> */}
           <Route
             exact
             path="/item/:id"

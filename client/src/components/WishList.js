@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-import Wish from "./Wish";
+import Wish from './Wish';
 
 export default function WishList(props) {
   const [wished_items, setWished_items] = useState(null);
-  const [all_items, setAll_items] = useState("");
+  const [all_items, setAll_items] = useState('');
 
   useEffect(() => {
-    fetch("/items", {
-      credentials: "include",
+    fetch('/items', {
+      credentials: 'include',
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
@@ -24,8 +24,8 @@ export default function WishList(props) {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>WISHLIST</h1>
-      {wished_items ? (
+      <h1 style={{ textAlign: 'center' }}>WISHLIST</h1>
+      {wished_items && wished_items.length >= 1 ? (
         <div className="centered">
           {wished_items.map((item) => (
             <Wish
@@ -38,7 +38,9 @@ export default function WishList(props) {
           ))}
         </div>
       ) : (
-        <></>
+        <h3 style={{ textAlign: 'center' }} className="centered">
+          You have no wished items on your list yet
+        </h3>
       )}
     </div>
   );

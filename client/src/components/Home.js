@@ -10,7 +10,7 @@ function Home({ currentUser, setCurrentUser, categories, cities }) {
   return (
     <div className="home">
       <h1 style={{ textAlign: "center" }}>
-        Welcome back {currentUser.user_name}!
+        Welcome {currentUser.user_name}!
       </h1>
       <h3 variant="body1" style={{ textAlign: "center", color: "grey" }}>
         Random Bazaar is a market place to share goods with your community.
