@@ -20,6 +20,19 @@ import ItemTypeCategory from './components/ItemTypeCategory';
 
 function UnauthenticatedApp({ setCurrentUser, categories, cities }) {
   const history = useHistory();
+  const guestUser = {
+    email: 'admin@gmail.com',
+    id: 0,
+    items: [],
+    location: 'Manhattan',
+    phone: '000',
+    rating_average: null,
+    received_messages: [{}],
+    reviews: [],
+    sent_messages: [],
+    user_name: 'guest',
+    wishlists: [],
+  };
   return (
     <div>
       <BrowserRouter>
@@ -65,6 +78,13 @@ function UnauthenticatedApp({ setCurrentUser, categories, cities }) {
             exact
             path="/item-type"
             render={(props) => <ItemTypeCategory props={props} />}
+          />
+          <Route
+            exact
+            path="/item/:id"
+            render={(props) => (
+              <ItemInfo props={props} currentUser={guestUser} />
+            )}
           />
 
           <Redirect to="/" />

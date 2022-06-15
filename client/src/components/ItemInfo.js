@@ -1,16 +1,16 @@
-import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import * as React from "react";
-import Box from "@mui/material/Box";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import CardMedia from "@mui/material/CardMedia";
+import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import CardMedia from '@mui/material/CardMedia';
 
 function ItemInfo(info) {
   const path = info.props.location.pathname;
-  const array = path.split("/");
+  const array = path.split('/');
   const id = array[array.length - 1];
 
   const [itemInfo, setItemInfo] = useState(info);
@@ -25,7 +25,7 @@ function ItemInfo(info) {
   const bull = (
     <Box
       component="span"
-      sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
+      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
     >
       •
     </Box>
@@ -33,15 +33,15 @@ function ItemInfo(info) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
   useEffect(() => {
     fetch(`/items/${id}`, {
-      credentials: "include",
+      credentials: 'include',
     }).then((res) => {
       if (res.ok) {
         res.json().then((item_info) => {
@@ -51,7 +51,7 @@ function ItemInfo(info) {
     });
   }, []);
   const handleKeyDown = (e) => {
-    if (e.key === "Escape") {
+    if (e.key === 'Escape') {
       history.goBack();
     }
   };
@@ -60,18 +60,17 @@ function ItemInfo(info) {
   };
   const contactOwnerAction = () => {
     history.push({
-      pathname: "/messager",
+      pathname: '/messager',
       state: itemInfo.owner_id,
     });
   };
 
   const addToWishlist = () => {
-    console.log("add to wishlist");
     setWishes_ids([parseInt(id), ...wishes_ids]);
     console.log(id);
     const config = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: itemInfo.name,
         item_id: itemInfo.id,
@@ -79,7 +78,7 @@ function ItemInfo(info) {
       }),
     };
 
-    fetch("/wishlist", config).then((response) => {
+    fetch('/wishlist', config).then((response) => {
       if (response.ok) {
         response.json().then((item_wished) => {
           info.setCurrentUser({
@@ -89,7 +88,7 @@ function ItemInfo(info) {
         });
       } else {
         // DO BETTER ERROR HANDLING
-        console.log("ERROORRRR");
+        console.log('ERROORRRR');
       }
     });
   };
@@ -102,14 +101,14 @@ function ItemInfo(info) {
         className="centered__itemInfo"
         sx={{
           maxWidth: 600,
-          border: "1px solid lightgrey",
+          border: '1px solid lightgrey',
           borderRadius: 5,
           padding: 2,
           boxShadow: 2,
         }}
       >
         <React.Fragment>
-          <Button color="error" style={{ float: "right" }} onClick={closeInfo}>
+          <Button color="error" style={{ float: 'right' }} onClick={closeInfo}>
             ✖️
           </Button>
 
@@ -119,7 +118,7 @@ function ItemInfo(info) {
                 component="img"
                 height="300"
                 image={itemInfo.image_file}
-                style={{ contentFit: "contain" }}
+                style={{ contentFit: 'contain' }}
                 alt="card-media"
               />
             ) : (
@@ -128,7 +127,7 @@ function ItemInfo(info) {
                 height="300"
                 image={itemInfo.image}
                 alt="card-media"
-                style={{ contentFit: "contain" }}
+                style={{ contentFit: 'contain' }}
               />
             )}
             <Typography
@@ -148,7 +147,7 @@ function ItemInfo(info) {
               {itemInfo.description}
               <br />
             </Typography>
-            {itemInfo.type == "Sell" ? (
+            {itemInfo.type == 'Sell' ? (
               <Typography variant="body2">
                 ${itemInfo.price}
                 <br />
@@ -158,11 +157,11 @@ function ItemInfo(info) {
             )}
           </CardContent>
           <CardActions>
-            {user ? (
+            {user && info.currentUser.id !== 0 ? (
               <>
                 {itemInfo.owner_id != info.currentUser.id ? (
                   <>
-                    {" "}
+                    {' '}
                     <Button size="small" onClick={contactOwnerAction}>
                       Contact owner - {itemInfo.owner}
                     </Button>
@@ -181,7 +180,7 @@ function ItemInfo(info) {
                       size="small"
                       onClick={() => {
                         history.push({
-                          pathname: "/manage-items",
+                          pathname: '/manage-items',
                         });
                       }}
                     >
@@ -195,7 +194,7 @@ function ItemInfo(info) {
                 size="small"
                 onClick={() => {
                   history.push({
-                    pathname: "/login",
+                    pathname: '/login',
                   });
                 }}
               >

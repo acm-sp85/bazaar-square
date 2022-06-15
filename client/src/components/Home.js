@@ -5,8 +5,10 @@ import RightComponent from './RightComponent';
 import ItemTypesCarousel from './ItemTypesCarousel';
 import CategoriesCarousel from './CategoriesCarousel';
 import AreasCarousel from './AreasCarousel';
+import { useHistory } from 'react-router-dom';
 
 function Home({ currentUser, setCurrentUser, categories, cities }) {
+  const history = useHistory();
   return (
     <div className="home">
       {currentUser ? (
@@ -14,7 +16,23 @@ function Home({ currentUser, setCurrentUser, categories, cities }) {
           Welcome {currentUser.user_name}!{' '}
         </h1>
       ) : (
-        <></>
+        <>
+          {' '}
+          <h3
+            style={{
+              textAlign: 'center',
+              textDecorationLine: 'underline',
+              cursor: 'pointer',
+            }}
+            onClick={() =>
+              history.push({
+                pathname: '/login',
+              })
+            }
+          >
+            LOG IN TO ENJOY THE PLATFORM
+          </h3>
+        </>
       )}
 
       <h3 variant="body1" style={{ textAlign: 'center', color: 'grey' }}>
